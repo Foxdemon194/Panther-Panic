@@ -661,9 +661,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 5
+  m_MaxValue: 3
   m_WholeNumbers: 1
-  m_Value: 5
+  m_Value: 3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -934,11 +934,11 @@ PrefabInstance:
       objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 9163043197144659175, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_Name
-      value: Enemy 1
+      value: Poacher 1
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659175, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_TagString
-      value: test
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: spaces.Array.size
@@ -1248,9 +1248,9 @@ MonoBehaviour:
   currentY: 0
   rand: 0
   newTarget: 0
-  speed: 0
-  moves: 3
-  movement: 0
+  speed: 0.01
+  moves: 0
+  movement: 2
   check: {fileID: 194715123}
   checking: 0
 --- !u!1 &224894441
@@ -1898,7 +1898,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Decoys:'
+  m_Text: 'Decoys: 1'
 --- !u!222 &333345578
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2135,12 +2135,16 @@ PrefabInstance:
       objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 9163043197144659175, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_Name
-      value: Player 4
+      value: Scout
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1175005378}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: movement
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: spaces.Array.size
       value: 54
@@ -2635,12 +2639,16 @@ PrefabInstance:
       objectReference: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 9163043197144659175, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_Name
-      value: Player 3
+      value: Tracker
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1175005378}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: movement
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: spaces.Array.size
       value: 54
@@ -3323,7 +3331,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Player 4
+  m_Text: Scout
 --- !u!222 &481824665
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4428,11 +4436,11 @@ PrefabInstance:
       objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 9163043197144659175, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_Name
-      value: Enemy 2
+      value: Poacher 2
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659175, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_TagString
-      value: test
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: spaces.Array.size
@@ -4742,9 +4750,9 @@ MonoBehaviour:
   currentY: 0
   rand: 0
   newTarget: 0
-  speed: 0
-  moves: 3
-  movement: 0
+  speed: 0.01
+  moves: 0
+  movement: 2
   check: {fileID: 568952112}
   checking: 0
 --- !u!1001 &643915749
@@ -4801,12 +4809,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659175, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_Name
-      value: Player 1
+      value: Intern
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1175005378}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: movement
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: spaces.Array.size
       value: 54
@@ -5120,9 +5132,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 5
+  m_MaxValue: 3
   m_WholeNumbers: 1
-  m_Value: 5
+  m_Value: 3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5197,7 +5209,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 4/4
+  m_Text: 3/3
 --- !u!222 &650367586
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5766,9 +5778,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 5
+  m_MaxValue: 3
   m_WholeNumbers: 1
-  m_Value: 5
+  m_Value: 3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6216,7 +6228,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Moves:'
+  m_Text: 'Moves: 3'
 --- !u!222 &905110701
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6296,7 +6308,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Player 1
+  m_Text: Intern
 --- !u!222 &907927107
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7219,7 +7231,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Player 3
+  m_Text: Tracker
 --- !u!222 &1030343212
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8206,7 +8218,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Moves:'
+  m_Text: 'Moves: 2'
 --- !u!222 &1146108141
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8286,7 +8298,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Moves:'
+  m_Text: 'Moves: 1'
 --- !u!222 &1148854013
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8865,7 +8877,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Player 2
+  m_Text: Vet
 --- !u!222 &1196876394
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9686,7 +9698,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 2/2
+  m_Text: 3/3
 --- !u!222 &1309071174
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10021,7 +10033,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Decoys:'
+  m_Text: 'Decoys: 2'
 --- !u!222 &1333897211
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10101,7 +10113,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Decoys:'
+  m_Text: 'Decoys: 4'
 --- !u!222 &1346413767
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10395,7 +10407,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Decoys:'
+  m_Text: 'Decoys: 1'
 --- !u!222 &1414807363
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10475,7 +10487,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Trust:'
+  m_Text: 'Trust: 1'
 --- !u!222 &1429241466
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11181,9 +11193,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 5
+  m_MaxValue: 2
   m_WholeNumbers: 1
-  m_Value: 5
+  m_Value: 2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11687,7 +11699,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Trust:'
+  m_Text: 'Trust: 2'
 --- !u!222 &1626211355
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12057,7 +12069,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Moves:'
+  m_Text: 'Moves: 4'
 --- !u!222 &1717118024
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12137,7 +12149,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 3/3
+  m_Text: 2/2
 --- !u!222 &1717295703
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12565,7 +12577,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 2/2
+  m_Text: 3/3
 --- !u!222 &1803343928
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12778,7 +12790,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Trust:'
+  m_Text: 'Trust: 1'
 --- !u!222 &1847041912
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13655,7 +13667,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Trust:'
+  m_Text: 'Trust: 4'
 --- !u!222 &1946854616
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13722,12 +13734,16 @@ PrefabInstance:
       objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 9163043197144659175, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_Name
-      value: Player 2
+      value: Vet
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1175005378}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: movement
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: spaces.Array.size
       value: 54
