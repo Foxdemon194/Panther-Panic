@@ -30,7 +30,6 @@ public class Roaming : MonoBehaviour
         currentY = Mathf.Round(transform.position.y * 100) / 100;
         targetX = Mathf.Round(target.position.x * 100) / 100;
         targetY = Mathf.Round(target.position.y * 100) / 100;
-        checking = check.GetComponent<Checker>().test;
 
         if (moves <= 0)
         {
@@ -43,71 +42,19 @@ public class Roaming : MonoBehaviour
 
             if (currentX < targetX)
             {
-                check.transform.position = new Vector2(transform.position.x + 1f, transform.position.y);
-                //MoveRight();
-
-                if (checking == true)
-                {
-                    check.transform.position = check.transform.position;
-                    check.transform.parent = null;
-                    MoveRight();
-                }
-                if (checking == false)
-                {
-                    //idk yet
-                    StopMove();
-                }
+                MoveRight();
             }
             else if (currentX > targetX)
             {
-                check.transform.position = new Vector2(transform.position.x - 1f, transform.position.y);
-                //MoveLeft();
-
-                if (checking == true)
-                {
-                    check.transform.position = check.transform.position;
-                    check.transform.parent = null;
-                    MoveLeft();
-                }
-                if (checking == false)
-                {
-                    //idk yet
-                    StopMove();
-                }
+                MoveLeft();
             }
             else if (currentY < targetY)
             {
-                check.transform.position = new Vector2(transform.position.x, transform.position.y + 1f);
-                //MoveUp();
-
-                if (checking == true)
-                {
-                    check.transform.position = check.transform.position;
-                    check.transform.parent = null;
-                    MoveUp();
-                }
-                if (checking == false)
-                {
-                    //idk yet
-                    StopMove();
-                }
+                MoveUp();
             }
             else if (currentY > targetY)
             {
-                check.transform.position = new Vector2(transform.position.x, transform.position.y - 1f);
-                //MoveDown();
-
-                if (checking == true)
-                {
-                    check.transform.position = check.transform.position;
-                    check.transform.parent = null;
-                    MoveDown();
-                }
-                if (checking == false)
-                {
-                    //idk yet
-                    StopMove();
-                }
+                MoveDown();
             }
         }
 

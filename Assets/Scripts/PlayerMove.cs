@@ -16,8 +16,7 @@ public class PlayerMove : MonoBehaviour
     public float speed;
     public int moves = 3;
     public int movement;
-    public GameObject check;
-    public bool checking;
+    public GameObject checker;
 
     void Update()
     {
@@ -27,7 +26,6 @@ public class PlayerMove : MonoBehaviour
         currentY = Mathf.Round(transform.position.y * 100) / 100;
         targetX = Mathf.Round(target.position.x * 100) / 100;
         targetY = Mathf.Round(target.position.y * 100) / 100;
-        checking = check.GetComponent<Checker>().test;
 
         if (moves <= 0)
         {
@@ -37,70 +35,54 @@ public class PlayerMove : MonoBehaviour
         {
             if (currentX < targetX)
             {
-                check.transform.position = new Vector2(transform.position.x + 1f, transform.position.y);
-                //MoveRight();
+                checker.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
 
-                if (checking == true)
+                if (checker.GetComponent<Checker>().onGrid == true)
                 {
-                    check.transform.position = check.transform.position;
-                    check.transform.parent = null;
                     MoveRight();
                 }
-                if (checking == false)
+                else
                 {
-                    //idk yet
-                    StopMove();
+                    Debug.Log("Stuck R");
                 }
             }
             else if (currentX > targetX)
             {
-                check.transform.position = new Vector2(transform.position.x - 1f, transform.position.y);
-                //MoveLeft();
+                checker.transform.position = new Vector2(transform.position.x - 1, transform.position.y);
 
-                if (checking == true)
+                if (checker.GetComponent<Checker>().onGrid == true)
                 {
-                    check.transform.position = check.transform.position;
-                    check.transform.parent = null;
                     MoveLeft();
                 }
-                if (checking == false)
+                else
                 {
-                    //idk yet
-                    StopMove();
+                    Debug.Log("Stuck L");
                 }
             }
             else if (currentY < targetY)
             {
-                check.transform.position = new Vector2(transform.position.x, transform.position.y + 1f);
-                //MoveUp();
+                checker.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
 
-                if (checking == true)
+                if (checker.GetComponent<Checker>().onGrid == true)
                 {
-                    check.transform.position = check.transform.position;
-                    check.transform.parent = null;
                     MoveUp();
                 }
-                if (checking == false)
+                else
                 {
-                    //idk yet
-                    StopMove();
+                    Debug.Log("Stuck U");
                 }
             }
             else if (currentY > targetY)
             {
-                check.transform.position = new Vector2(transform.position.x, transform.position.y - 1f);
-                //MoveDown();
+                checker.transform.position = new Vector2(transform.position.x, transform.position.y - 1);
 
-                if (checking == true)
+                if (checker.GetComponent<Checker>().onGrid == true)
                 {
-                    check.transform.position = check.transform.position;
-                    check.transform.parent = null;
                     MoveDown();
                 }
-                if (checking == false)
+                else
                 {
-                    //idk yet
-                    StopMove();
+                    Debug.Log("Stuck D");
                 }
             }
         }
@@ -117,24 +99,48 @@ public class PlayerMove : MonoBehaviour
     {
         transform.Translate(Vector2.zero);
         transform.Translate(Vector2.up * speed);
+
+        if (checker.GetComponent<Checker>().onGrid == true && transform.position == checker.transform.position)
+        {
+            StopMove();
+            moves--;
+        }
     }
 
     void MoveDown()
     {
         transform.Translate(Vector2.zero);
         transform.Translate(Vector2.down * speed);
+
+        if (checker.GetComponent<Checker>().onGrid == true && transform.position == checker.transform.position)
+        {
+            StopMove();
+            moves--;
+        }
     }
 
     void MoveLeft()
     {
         transform.Translate(Vector2.zero);
         transform.Translate(Vector2.left * speed);
+
+        if (checker.GetComponent<Checker>().onGrid == true && transform.position == checker.transform.position)
+        {
+            StopMove();
+            moves--;
+        }
     }
 
     void MoveRight()
     {
         transform.Translate(Vector2.zero);
         transform.Translate(Vector2.right * speed);
+
+        if (checker.GetComponent<Checker>().onGrid == true && transform.position == checker.transform.position)
+        {
+            StopMove();
+            moves--;
+        }
     }
 
     void StopMove()
