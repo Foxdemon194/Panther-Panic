@@ -8,6 +8,7 @@ public class Checker : MonoBehaviour
     public GameObject grid;
     public int test;
     public bool onGrid;
+    public float test2;
 
     void Update()
     {
@@ -22,11 +23,16 @@ public class Checker : MonoBehaviour
             ParentGrid();
             test = 1;
         }
-        else if (test >= 0 && onGrid == false)
+        else if (test > 0 && onGrid == false)
         {
             Debug.Log("Player");
             ParentPlayer();
             test = 0;
+        }
+
+        if (test2 > 2)
+        {
+            test2 = 2;
         }
     }
 
@@ -58,5 +64,52 @@ public class Checker : MonoBehaviour
     {
         transform.parent = grid.transform;
         transform.position = grid.transform.position;
+
+        test2 = 0;
+    }
+
+    public void CheckUp()
+    {
+        if (test2 <= 0)
+        {
+            ParentPlayer();
+
+            transform.position = new Vector2(player.transform.position.x, player.transform.position.y + 1);
+
+            test2++;
+        }
+    }
+    public void CheckDown()
+    {
+        if (test2 <= 0)
+        {
+            ParentPlayer();
+
+            transform.position = new Vector2(player.transform.position.x, player.transform.position.y - 1);
+
+            test2++;
+        }
+    }
+    public void CheckRight()
+    {
+        if (test2 <= 0)
+        {
+            ParentPlayer();
+
+            transform.position = new Vector2(player.transform.position.x + 1, player.transform.position.y);
+
+            test2++;
+        }
+    }
+    public void CheckLeft()
+    {
+        if (test2 <= 0)
+        {
+            ParentPlayer();
+
+            transform.position = new Vector2(player.transform.position.x - 1, player.transform.position.y);
+
+            test2++;
+        }
     }
 }

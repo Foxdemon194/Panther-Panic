@@ -35,7 +35,7 @@ public class PlayerMove : MonoBehaviour
         {
             if (currentX < targetX)
             {
-                checker.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
+                checker.GetComponent<Checker>().CheckRight();
 
                 if (checker.GetComponent<Checker>().onGrid == true)
                 {
@@ -48,7 +48,7 @@ public class PlayerMove : MonoBehaviour
             }
             else if (currentX > targetX)
             {
-                checker.transform.position = new Vector2(transform.position.x - 1, transform.position.y);
+                checker.GetComponent<Checker>().CheckLeft();
 
                 if (checker.GetComponent<Checker>().onGrid == true)
                 {
@@ -61,7 +61,7 @@ public class PlayerMove : MonoBehaviour
             }
             else if (currentY < targetY)
             {
-                checker.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
+                checker.GetComponent<Checker>().CheckUp();
 
                 if (checker.GetComponent<Checker>().onGrid == true)
                 {
@@ -74,7 +74,7 @@ public class PlayerMove : MonoBehaviour
             }
             else if (currentY > targetY)
             {
-                checker.transform.position = new Vector2(transform.position.x, transform.position.y - 1);
+                checker.GetComponent<Checker>().CheckDown();
 
                 if (checker.GetComponent<Checker>().onGrid == true)
                 {
