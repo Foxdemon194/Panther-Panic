@@ -6,9 +6,10 @@ public class Checker : MonoBehaviour
 {
     public GameObject player;
     public GameObject grid;
-    public int test;
     public bool onGrid;
+    public bool nav;
     public float test2;
+    public float test1;
 
     void Update()
     {
@@ -17,22 +18,34 @@ public class Checker : MonoBehaviour
             return;
         }
 
-        if (test <= 0 && onGrid == true)
+        if (onGrid)
         {
-            Debug.Log("Grid");
-            ParentGrid();
-            test = 1;
+            if (nav)
+            {
+                ParentGrid();
+            }
         }
-        else if (test > 0 && onGrid == false)
+        else
         {
-            Debug.Log("Player");
             ParentPlayer();
-            test = 0;
         }
 
         if (test2 > 2)
         {
             test2 = 2;
+        }
+
+        if (test1 > 2)
+        {
+            test1 = 2;
+        }
+
+        if (player.tag == "Player")
+        {
+            if (player.GetComponent<PlayerMove>().moves <= 0)
+            {
+                test1 = 0;
+            }
         }
     }
 
@@ -42,6 +55,13 @@ public class Checker : MonoBehaviour
         {
             grid = collision.gameObject;
             onGrid = true;
+            nav = collision.GetComponent<GridMap>().navigable;
+            
+            if (test1 <= 0 && player.gameObject.tag == "Player")
+            {
+                player.GetComponent<PlayerMove>().moves--;
+                test1++;
+            }
         }
     }
 

@@ -37,7 +37,7 @@ public class PlayerMove : MonoBehaviour
             {
                 checker.GetComponent<Checker>().CheckRight();
 
-                if (checker.GetComponent<Checker>().onGrid == true)
+                if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
                 {
                     MoveRight();
                 }
@@ -50,7 +50,7 @@ public class PlayerMove : MonoBehaviour
             {
                 checker.GetComponent<Checker>().CheckLeft();
 
-                if (checker.GetComponent<Checker>().onGrid == true)
+                if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
                 {
                     MoveLeft();
                 }
@@ -63,7 +63,7 @@ public class PlayerMove : MonoBehaviour
             {
                 checker.GetComponent<Checker>().CheckUp();
 
-                if (checker.GetComponent<Checker>().onGrid == true)
+                if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
                 {
                     MoveUp();
                 }
@@ -76,7 +76,7 @@ public class PlayerMove : MonoBehaviour
             {
                 checker.GetComponent<Checker>().CheckDown();
 
-                if (checker.GetComponent<Checker>().onGrid == true)
+                if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
                 {
                     MoveDown();
                 }
@@ -99,48 +99,24 @@ public class PlayerMove : MonoBehaviour
     {
         transform.Translate(Vector2.zero);
         transform.Translate(Vector2.up * speed);
-
-        if (checker.GetComponent<Checker>().onGrid == true && transform.position == checker.transform.position)
-        {
-            StopMove();
-            moves--;
-        }
     }
 
     void MoveDown()
     {
         transform.Translate(Vector2.zero);
         transform.Translate(Vector2.down * speed);
-
-        if (checker.GetComponent<Checker>().onGrid == true && transform.position == checker.transform.position)
-        {
-            StopMove();
-            moves--;
-        }
     }
 
     void MoveLeft()
     {
         transform.Translate(Vector2.zero);
         transform.Translate(Vector2.left * speed);
-
-        if (checker.GetComponent<Checker>().onGrid == true && transform.position == checker.transform.position)
-        {
-            StopMove();
-            moves--;
-        }
     }
 
     void MoveRight()
     {
         transform.Translate(Vector2.zero);
         transform.Translate(Vector2.right * speed);
-
-        if (checker.GetComponent<Checker>().onGrid == true && transform.position == checker.transform.position)
-        {
-            StopMove();
-            moves--;
-        }
     }
 
     void StopMove()

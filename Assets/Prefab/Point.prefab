@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1756124162889314227}
   - component: {fileID: 931838829706026991}
-  - component: {fileID: 5162864675845296227}
   - component: {fileID: 2010817398}
-  - component: {fileID: 2010817397}
+  - component: {fileID: 4875993493713025254}
   m_Layer: 0
   m_Name: Point
   m_TagString: Grid
@@ -33,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &931838829706026991
 SpriteRenderer:
@@ -74,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1962773709
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.33291206, g: 0.5566038, b: 0.41881418, a: 0.54509807}
@@ -87,20 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5162864675845296227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5245954493205897697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aef176b164cf9d64480b40f1142fa5f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  touch: 0
-  stopped: 0
 --- !u!61 &2010817398
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2010817397
+--- !u!114 &4875993493713025254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,6 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5245954493205897697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc4da6b508c385b42abdbbb9e2e0a4ba, type: 3}
+  m_Script: {fileID: 11500000, guid: aef176b164cf9d64480b40f1142fa5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navigable: 0
