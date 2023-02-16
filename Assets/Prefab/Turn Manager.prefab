@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1582536335486013991}
   - component: {fileID: 1582536335486013990}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Turn Manager
   m_TagString: Manage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

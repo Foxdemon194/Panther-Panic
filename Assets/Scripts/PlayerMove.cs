@@ -18,6 +18,8 @@ public class PlayerMove : MonoBehaviour
     public int movement;
     public GameObject checker;
 
+    int called = 0;
+
     void Update()
     {
         //Rework the checker thing; it sucks
@@ -35,54 +37,78 @@ public class PlayerMove : MonoBehaviour
         {
             if (currentX < targetX)
             {
-                checker.GetComponent<Checker>().CheckRight();
+                if (called <= 0)
+                {
+                    checker.GetComponent<Checker>().CheckRight();
+                    called++;
+                }
 
                 if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
                 {
                     MoveRight();
+                    called = 0;
                 }
                 else
                 {
                     Debug.Log("Stuck R");
+                    called = 0;
                 }
             }
             else if (currentX > targetX)
             {
-                checker.GetComponent<Checker>().CheckLeft();
+                if (called <= 0)
+                {
+                    checker.GetComponent<Checker>().CheckLeft();
+                    called++;
+                }
 
                 if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
                 {
                     MoveLeft();
+                    called = 0;
                 }
                 else
                 {
                     Debug.Log("Stuck L");
+                    called = 0;
                 }
             }
             else if (currentY < targetY)
             {
-                checker.GetComponent<Checker>().CheckUp();
+                if (called <= 0)
+                {
+                    checker.GetComponent<Checker>().CheckUp();
+                    called++;
+                }
 
                 if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
                 {
                     MoveUp();
+                    called = 0;
                 }
                 else
                 {
                     Debug.Log("Stuck U");
+                    called = 0;
                 }
             }
             else if (currentY > targetY)
             {
-                checker.GetComponent<Checker>().CheckDown();
+                if (called <= 0)
+                {
+                    checker.GetComponent<Checker>().CheckDown();
+                    called++;
+                }
 
                 if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
                 {
                     MoveDown();
+                    called = 0;
                 }
                 else
                 {
                     Debug.Log("Stuck D");
+                    called = 0;
                 }
             }
         }
