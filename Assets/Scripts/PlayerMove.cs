@@ -19,6 +19,7 @@ public class PlayerMove : MonoBehaviour
     public GameObject checker;
     public float checkX;
     public float checkY;
+    public float stuck;
 
     void Update()
     {
@@ -82,7 +83,7 @@ public class PlayerMove : MonoBehaviour
         //...if not, it tries going around
         else
         {
-            //FIgure out what to do next
+            stuck = 1;
         }
     }
 
@@ -105,8 +106,7 @@ public class PlayerMove : MonoBehaviour
         //...if not, it tries going around
         else
         {
-            checker.GetComponent<Checker>().check = true;
-            //MovementD();
+            stuck = 2;
         }
     }
 
@@ -129,9 +129,7 @@ public class PlayerMove : MonoBehaviour
         //...if not, it tries going around
         else
         {
-            Debug.Log(checker.GetComponent<Checker>().check);
-            //checker.GetComponent<Checker>().check = true;
-            //MovementL();
+            stuck = 3;
         }
     }
 
@@ -154,8 +152,7 @@ public class PlayerMove : MonoBehaviour
         //...if not, it tries going around
         else
         {
-            checker.GetComponent<Checker>().check = true;
-            //MovementR();
+            stuck = 4;
         }
     }
 
