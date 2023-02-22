@@ -9,9 +9,15 @@ public class Checker : MonoBehaviour
     public bool onGrid;
     public bool nav;
     public float test1;
+    public bool check;
 
     void Update()
     {
+        if (grid == null)
+        {
+            return;
+        }
+
         if (onGrid)
         {
             if (nav)
@@ -48,27 +54,44 @@ public class Checker : MonoBehaviour
 
     public void CheckUp()
     {
-        ParentPlayer();
+        if (check)
+        {
+            ParentPlayer();
 
-        transform.position = new Vector2(player.transform.position.x, player.transform.position.y + 1);
+            transform.position = new Vector2(transform.position.x, transform.position.y + 0.782f);
+        }
     }
     public void CheckDown()
     {
-        ParentPlayer();
+        if (check)
+        {
+            ParentPlayer();
 
-        transform.position = new Vector2(player.transform.position.x, player.transform.position.y - 1);
+            transform.position = new Vector2(transform.position.x, transform.position.y - 0.782f);
+        }
     }
     public void CheckRight()
     {
-        ParentPlayer();
+        if (check)
+        {
+            ParentPlayer();
 
-        transform.position = new Vector2(player.transform.position.x + 1, player.transform.position.y);
+            transform.position = new Vector2(transform.position.x + 0.74f, transform.position.y);
+        }
     }
     public void CheckLeft()
     {
-        ParentPlayer();
+        if (check)
+        {
+            ParentPlayer();
 
-        transform.position = new Vector2(player.transform.position.x - 1, player.transform.position.y);
+            transform.position = new Vector2(transform.position.x - 0.74f, transform.position.y);
+        }
+    }
+
+    public void TrigEx()
+    {
+        transform.position = new Vector2(100, 100);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -78,14 +101,14 @@ public class Checker : MonoBehaviour
             grid = collision.gameObject;
             onGrid = true;
             nav = grid.GetComponent<GridMap>().navigable;
-
-            /*
-            if (test1 <= 0 && player.gameObject.tag == "Player")
-            {
-                player.GetComponent<PlayerMove>().moves--;
-                test1++;
-            }
-            */
+        }
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Grid")
+        {
+            grid = null; 
+            onGrid = false;
         }
     }
 }

@@ -12226,7 +12226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6679581199425870362, guid: 7f8e71a772c7a454f8a69a96cfb69470, type: 3}
       propertyPath: navigable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6679581199440717056, guid: 7f8e71a772c7a454f8a69a96cfb69470, type: 3}
       propertyPath: navigable

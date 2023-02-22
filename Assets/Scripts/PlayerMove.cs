@@ -17,99 +17,41 @@ public class PlayerMove : MonoBehaviour
     public int moves = 3;
     public int movement;
     public GameObject checker;
-
-    int called = 0;
+    public float checkX;
+    public float checkY;
 
     void Update()
     {
-        //Rework the checker thing; it sucks
+        //Fix the called part of the movement, not working as intended
 
         currentX = Mathf.Round(transform.position.x * 100) / 100;
         currentY = Mathf.Round(transform.position.y * 100) / 100;
         targetX = Mathf.Round(target.position.x * 100) / 100;
         targetY = Mathf.Round(target.position.y * 100) / 100;
+        checkX = Mathf.Round(checker.transform.position.x * 100) / 100;
+        checkY = Mathf.Round(checker.transform.position.y * 100) / 100;
 
         if (moves <= 0)
         {
             StopMove();
         }
-        if (moves > 0)
+        else
         {
             if (currentX < targetX)
             {
-                if (called <= 0)
-                {
-                    checker.GetComponent<Checker>().CheckRight();
-                    called++;
-                }
-
-                if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
-                {
-                    MoveRight();
-                    called = 0;
-                }
-                else
-                {
-                    Debug.Log("Stuck R");
-                    called = 0;
-                }
+                MovementR();
             }
             else if (currentX > targetX)
             {
-                if (called <= 0)
-                {
-                    checker.GetComponent<Checker>().CheckLeft();
-                    called++;
-                }
-
-                if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
-                {
-                    MoveLeft();
-                    called = 0;
-                }
-                else
-                {
-                    Debug.Log("Stuck L");
-                    called = 0;
-                }
+                MovementL();
             }
             else if (currentY < targetY)
             {
-                if (called <= 0)
-                {
-                    checker.GetComponent<Checker>().CheckUp();
-                    called++;
-                }
-
-                if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
-                {
-                    MoveUp();
-                    called = 0;
-                }
-                else
-                {
-                    Debug.Log("Stuck U");
-                    called = 0;
-                }
+                MovementU();
             }
             else if (currentY > targetY)
             {
-                if (called <= 0)
-                {
-                    checker.GetComponent<Checker>().CheckDown();
-                    called++;
-                }
-
-                if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
-                {
-                    MoveDown();
-                    called = 0;
-                }
-                else
-                {
-                    Debug.Log("Stuck D");
-                    called = 0;
-                }
+                MovementD();
             }
         }
 
@@ -117,6 +59,103 @@ public class PlayerMove : MonoBehaviour
         {
             StopMove();
             moves = 0;
+        }
+    }
+
+
+    void MovementR()
+    {
+        //Checks if it can move to the right...
+        checker.GetComponent<Checker>().CheckRight();
+        checker.GetComponent<Checker>().check = false;
+
+        //...if it can, it does
+        if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
+        {
+            MoveRight();
+
+            if (currentX >= checkX)
+            {
+                checker.GetComponent<Checker>().check = true;
+            }
+        }
+        //...if not, it tries going around
+        else
+        {
+            //FIgure out what to do next
+        }
+    }
+
+    void MovementL()
+    {
+        //Checks if it can move to the left...
+        checker.GetComponent<Checker>().CheckLeft();
+        checker.GetComponent<Checker>().check = false;
+
+        //...if it can, it does
+        if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
+        {
+            MoveLeft();
+
+            if (currentX <= checkX)
+            {
+                checker.GetComponent<Checker>().check = true;
+            }
+        }
+        //...if not, it tries going around
+        else
+        {
+            checker.GetComponent<Checker>().check = true;
+            //MovementD();
+        }
+    }
+
+    void MovementU()
+    {
+        //Checks if it can move up...
+        checker.GetComponent<Checker>().CheckUp();
+        checker.GetComponent<Checker>().check = false;
+
+        //...if it can, it does
+        if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
+        {
+            MoveUp();
+
+            if (currentY >= checkY)
+            {
+                checker.GetComponent<Checker>().check = true;
+            }
+        }
+        //...if not, it tries going around
+        else
+        {
+            Debug.Log(checker.GetComponent<Checker>().check);
+            //checker.GetComponent<Checker>().check = true;
+            //MovementL();
+        }
+    }
+
+    void MovementD()
+    {
+        //Checks if it can move down...
+        checker.GetComponent<Checker>().CheckDown();
+        checker.GetComponent<Checker>().check = false;
+
+        //...if it can, it does
+        if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
+        {
+            MoveDown();
+
+            if (currentY <= checkY)
+            {
+                checker.GetComponent<Checker>().check = true;
+            }
+        }
+        //...if not, it tries going around
+        else
+        {
+            checker.GetComponent<Checker>().check = true;
+            //MovementR();
         }
     }
 
