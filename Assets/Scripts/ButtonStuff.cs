@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ButtonStuff : MonoBehaviour
 {
+    public GameObject help;
+    public GameObject pause;
     public GameObject action;
     public GameObject character;
     public bool pressed = false;
@@ -36,6 +39,34 @@ public class ButtonStuff : MonoBehaviour
     {
         gButton = true;
         dButton = false;
+    }
+
+    public void Paused()
+    {
+        pause.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void UnPause()
+    {
+        pause.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void Help()
+    {
+        help.SetActive(true);
+    }
+
+    public void hBack()
+    {
+        help.SetActive(false);
+    }
+
+    public void QuitLevel()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void Player1()
@@ -99,7 +130,6 @@ public class ButtonStuff : MonoBehaviour
             Instantiate(decoy, GameObject.FindGameObjectWithTag("Manage").GetComponent<PlayerTurn>().activePlayer.GetComponent<PlayerMove>().spaces[0]);
         }
     }
-
     public void Button2()
     {
         if (gButton)
@@ -628,7 +658,6 @@ public class ButtonStuff : MonoBehaviour
             Instantiate(decoy, GameObject.FindGameObjectWithTag("Manage").GetComponent<PlayerTurn>().activePlayer.GetComponent<PlayerMove>().spaces[44]);
         }
     }
-
     public void Button46()
     {
         if (gButton)
@@ -641,7 +670,6 @@ public class ButtonStuff : MonoBehaviour
             Instantiate(decoy, GameObject.FindGameObjectWithTag("Manage").GetComponent<PlayerTurn>().activePlayer.GetComponent<PlayerMove>().spaces[45]);
         }
     }
-
     public void Button47()
     {
         if (gButton)
@@ -654,7 +682,6 @@ public class ButtonStuff : MonoBehaviour
             Instantiate(decoy, GameObject.FindGameObjectWithTag("Manage").GetComponent<PlayerTurn>().activePlayer.GetComponent<PlayerMove>().spaces[46]);
         }
     }
-
     public void Button48()
     {
         if (gButton)
@@ -667,7 +694,6 @@ public class ButtonStuff : MonoBehaviour
             Instantiate(decoy, GameObject.FindGameObjectWithTag("Manage").GetComponent<PlayerTurn>().activePlayer.GetComponent<PlayerMove>().spaces[47]);
         }
     }
-
     public void Button49()
     {
         if (gButton)
@@ -680,8 +706,7 @@ public class ButtonStuff : MonoBehaviour
             Instantiate(decoy, GameObject.FindGameObjectWithTag("Manage").GetComponent<PlayerTurn>().activePlayer.GetComponent<PlayerMove>().spaces[48]);
         }
     }
-
-    public void Button450()
+    public void Button50()
     {
         if (gButton)
         {
@@ -693,7 +718,6 @@ public class ButtonStuff : MonoBehaviour
             Instantiate(decoy, GameObject.FindGameObjectWithTag("Manage").GetComponent<PlayerTurn>().activePlayer.GetComponent<PlayerMove>().spaces[49]);
         }
     }
-
     public void Button51()
     {
         if (gButton)
@@ -706,7 +730,6 @@ public class ButtonStuff : MonoBehaviour
             Instantiate(decoy, GameObject.FindGameObjectWithTag("Manage").GetComponent<PlayerTurn>().activePlayer.GetComponent<PlayerMove>().spaces[50]);
         }
     }
-
     public void Button52()
     {
         if (gButton)
@@ -719,7 +742,6 @@ public class ButtonStuff : MonoBehaviour
             Instantiate(decoy, GameObject.FindGameObjectWithTag("Manage").GetComponent<PlayerTurn>().activePlayer.GetComponent<PlayerMove>().spaces[51]);
         }
     }
-
     public void Button53()
     {
         if (gButton)
@@ -732,7 +754,6 @@ public class ButtonStuff : MonoBehaviour
             Instantiate(decoy, GameObject.FindGameObjectWithTag("Manage").GetComponent<PlayerTurn>().activePlayer.GetComponent<PlayerMove>().spaces[52]);
         }
     }
-
     public void Button54()
     {
         if (gButton)

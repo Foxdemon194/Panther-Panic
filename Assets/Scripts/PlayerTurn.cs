@@ -23,13 +23,10 @@ public class PlayerTurn : MonoBehaviour
 
     public int maNum = 0;
 
-    float speed;
-
     void Start()
     {
         apComp = activePlayer.GetComponent<PlayerMove>();
         playersTurn = true;
-        speed = apComp.speed;
     }
 
     void Update()
@@ -47,8 +44,6 @@ public class PlayerTurn : MonoBehaviour
         {
             PlayersTurn();
         }
-
-        Debug.Log(maNum);
 
         MoveAround();
     }
@@ -106,6 +101,11 @@ public class PlayerTurn : MonoBehaviour
         //All for PLAYER vvvvv
         if (apComp.stuck > 0)
         {
+            if (apComp.moves <= 0)
+            {
+                return;
+            }
+
             //Makes the player go up one space vvv
             if (apComp.stuck == 1 && maNum <= 0)
             {
@@ -171,18 +171,6 @@ public class PlayerTurn : MonoBehaviour
             }
             else if (apComp.stuck == 3 && maNum == 4)
             {
-                transform.position = activePlayer.transform.position;
-                transform.Translate(Vector2.up * 0.782f);
-                touch = true;
-                maNum = 5;
-            }
-            else if (canMove && apComp.stuck == 3 && maNum == 5)
-            {
-                StartCoroutine(LP(transform.position, 0.3f));
-            }
-            else if (apComp.stuck == 3 && maNum == 6)
-            {
-                apComp.speed = speed;
                 apChecker.enabled = true;
                 apChecker.CheckRight();
                 maNum = -1;
@@ -218,18 +206,6 @@ public class PlayerTurn : MonoBehaviour
             }
             else if (apComp.stuck == 4 && maNum == 4)
             {
-                transform.position = activePlayer.transform.position;
-                transform.Translate(Vector2.down * 0.782f);
-                touch = true;
-                maNum = 5;
-            }
-            else if (canMove && apComp.stuck == 4 && maNum == 5)
-            {
-                StartCoroutine(LP(transform.position, 0.3f));
-            }
-            else if (apComp.stuck == 4 && maNum == 6)
-            {
-                apComp.speed = speed;
                 apChecker.enabled = true;
                 apChecker.CheckLeft();
                 maNum = -1;
@@ -240,7 +216,6 @@ public class PlayerTurn : MonoBehaviour
         
         if (maNum <= -1)
         {
-            apComp.speed = speed;
             transform.position = new Vector2(50, 50);
             apComp.enabled = true;
             apChecker.enabled = true;
