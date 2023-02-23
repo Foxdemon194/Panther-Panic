@@ -23,15 +23,21 @@ public class PlayerTurn : MonoBehaviour
 
     public int maNum = 0;
 
+    float speed;
+
     void Start()
     {
-        activePlayer = players[num];
         apComp = activePlayer.GetComponent<PlayerMove>();
         playersTurn = true;
+        speed = apComp.speed;
     }
 
     void Update()
     {
+        activePlayer = players[num];
+        apComp = activePlayer.GetComponent<PlayerMove>();
+        apChecker = activePlayer.GetComponent<PlayerMove>().checker.GetComponent<Checker>();
+
         if (apComp.moves <= 0 && playersTurn == false)
         {
             EnemysTurn();
@@ -42,8 +48,7 @@ public class PlayerTurn : MonoBehaviour
             PlayersTurn();
         }
 
-        activePlayer = players[num];
-        apChecker = activePlayer.GetComponent<PlayerMove>().checker.GetComponent<Checker>();
+        Debug.Log(maNum);
 
         MoveAround();
     }
@@ -137,10 +142,9 @@ public class PlayerTurn : MonoBehaviour
             //^^^
 
             //Makes the player go left one space vvv
-            if (maNum <= 0 && apComp.stuck == 3)
+            if (apComp.stuck == 3 && maNum <= 0)
             {
-                apChecker.enabled = false;
-                apComp.enabled = false;
+                apComp.speed = 0;
                 transform.position = activePlayer.transform.position;
                 transform.Translate(Vector2.left * 0.74f);
                 touch = true;
@@ -148,7 +152,6 @@ public class PlayerTurn : MonoBehaviour
             }
             else if (canMove && apComp.stuck == 3 && maNum == 1)
             {
-                apComp.speed = 0;
                 StartCoroutine(LP(transform.position, 0.3f));
             }
             else if (apComp.stuck == 3 && maNum == 2)
@@ -156,6 +159,7 @@ public class PlayerTurn : MonoBehaviour
                 transform.position = activePlayer.transform.position;
                 transform.Translate(Vector2.up * 0.782f);
                 touch = true;
+                maNum = 3;
             }
             else if (canMove && apComp.stuck == 3 && maNum == 3)
             {
@@ -163,17 +167,28 @@ public class PlayerTurn : MonoBehaviour
             }
             else if (apComp.stuck == 3 && maNum == 4)
             {
+                transform.position = activePlayer.transform.position;
+                transform.Translate(Vector2.up * 0.782f);
+                touch = true;
+                maNum = 5;
+            }
+            else if (canMove && apComp.stuck == 3 && maNum == 5)
+            {
+                StartCoroutine(LP(transform.position, 0.3f));
+            }
+            else if (apComp.stuck == 3 && maNum == 6)
+            {
+                apComp.speed = speed;
                 maNum = -1;
                 apComp.stuck = 0;
             }
             //^^^
 
-            
+
             //Makes the player go right one space vvv
-            if (maNum <= 0 && apComp.stuck == 4)
+            if (apComp.stuck == 4 && maNum <= 0)
             {
-                apChecker.enabled = false;
-                apComp.enabled = false;
+                apComp.speed = 0;
                 transform.position = activePlayer.transform.position;
                 transform.Translate(Vector2.right * 0.74f);
                 touch = true;
@@ -181,7 +196,6 @@ public class PlayerTurn : MonoBehaviour
             }
             else if (canMove && apComp.stuck == 4 && maNum == 1)
             {
-                apComp.speed = 0;
                 StartCoroutine(LP(transform.position, 0.3f));
             }
             else if (apComp.stuck == 4 && maNum == 2)
@@ -189,6 +203,7 @@ public class PlayerTurn : MonoBehaviour
                 transform.position = activePlayer.transform.position;
                 transform.Translate(Vector2.down * 0.782f);
                 touch = true;
+                maNum = 3;
             }
             else if (canMove && apComp.stuck == 4 && maNum == 3)
             {
@@ -196,6 +211,18 @@ public class PlayerTurn : MonoBehaviour
             }
             else if (apComp.stuck == 4 && maNum == 4)
             {
+                transform.position = activePlayer.transform.position;
+                transform.Translate(Vector2.down * 0.782f);
+                touch = true;
+                maNum = 5;
+            }
+            else if (canMove && apComp.stuck == 4 && maNum == 5)
+            {
+                StartCoroutine(LP(transform.position, 0.3f));
+            }
+            else if (apComp.stuck == 4 && maNum == 6)
+            {
+                apComp.speed = speed;
                 maNum = -1;
                 apComp.stuck = 0;
             }

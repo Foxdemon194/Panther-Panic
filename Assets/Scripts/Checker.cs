@@ -11,6 +11,14 @@ public class Checker : MonoBehaviour
     public float test1;
     public bool check;
 
+    void OnDisable()
+    {
+        if (player.GetComponent<PlayerMove>().speed > 0)
+        {
+            test1 = 0;
+        }
+    }
+
     void Update()
     {
         if (grid == null)
