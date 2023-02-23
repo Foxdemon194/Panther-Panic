@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class MenuStuff : MonoBehaviour
 {
@@ -27,6 +29,11 @@ public class MenuStuff : MonoBehaviour
     {
         SetInactive();
         levels.SetActive(true);
+    }
+
+    public void StartLevel1()
+    {
+        SceneManager.LoadScene("Game 2");
     }
 
     public void HowToPlay()

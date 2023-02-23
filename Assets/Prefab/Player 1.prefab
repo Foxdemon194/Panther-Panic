@@ -71,8 +71,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b256b861c1169448ca13129bd7efd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: 0
-  player: 1
+  player: {fileID: 0}
+  grid: {fileID: 0}
+  onGrid: 0
+  nav: 0
+  test1: 0
+  check: 0
 --- !u!1 &9163043197144659175
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcbfbc4ac1e8084ba3c76ce7c876b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   target: {fileID: 0}
   spaces:
   - {fileID: 0}
@@ -275,5 +280,7 @@ MonoBehaviour:
   speed: 0.01
   moves: 0
   movement: 2
-  check: {fileID: 9163043196009743233}
-  checking: 0
+  checker: {fileID: 0}
+  checkX: 0
+  checkY: 0
+  stuck: 0

@@ -902,7 +902,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Credits?
+  m_Text: Credits
 --- !u!222 &793120879
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3197,7 +3197,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Levels
+  m_Text: Level 1
 --- !u!222 &1948194571
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3525,7 +3525,7 @@ GameObject:
   - component: {fileID: 2100948763}
   - component: {fileID: 2100948762}
   m_Layer: 5
-  m_Name: Levels
+  m_Name: Level 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3598,7 +3598,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1181482056}
         m_TargetAssemblyTypeName: MenuStuff, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: StartLevel1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
