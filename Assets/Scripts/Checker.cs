@@ -11,14 +11,6 @@ public class Checker : MonoBehaviour
     public float test1;
     public bool check;
 
-    void OnDisable()
-    {
-        if (player.GetComponent<PlayerMove>().speed > 0)
-        {
-            test1 = 0;
-        }
-    }
-
     void Update()
     {
         if (grid == null)
@@ -95,11 +87,6 @@ public class Checker : MonoBehaviour
 
             transform.position = new Vector2(transform.position.x - 0.74f, transform.position.y);
         }
-    }
-
-    public void TrigEx()
-    {
-        transform.position = new Vector2(100, 100);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

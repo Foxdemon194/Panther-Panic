@@ -100,11 +100,14 @@ public class PlayerTurn : MonoBehaviour
 
     public void MoveAround()
     {
+        //Don't make two grids that are horizontally adjacent unnavigable since it will ignore the second grid
+        //Can fix l a t e r
+
         //All for PLAYER vvvvv
         if (apComp.stuck > 0)
         {
             //Makes the player go up one space vvv
-            if (maNum <= 0 && apComp.stuck == 1)
+            if (apComp.stuck == 1 && maNum <= 0)
             {
                 transform.position = activePlayer.transform.position;
                 transform.Translate(Vector2.up * 0.782f);
@@ -123,7 +126,7 @@ public class PlayerTurn : MonoBehaviour
             //^^^
 
             //Makes the player go down one space vvv
-            if (maNum <= 0 && apComp.stuck == 2)
+            if (apComp.stuck == 2 && maNum <= 0)
             {
                 transform.position = activePlayer.transform.position;
                 transform.Translate(Vector2.down * 0.782f);
@@ -144,7 +147,8 @@ public class PlayerTurn : MonoBehaviour
             //Makes the player go left one space vvv
             if (apComp.stuck == 3 && maNum <= 0)
             {
-                apComp.speed = 0;
+                apComp.enabled = false;
+                apChecker.enabled = false;
                 transform.position = activePlayer.transform.position;
                 transform.Translate(Vector2.left * 0.74f);
                 touch = true;
@@ -161,7 +165,7 @@ public class PlayerTurn : MonoBehaviour
                 touch = true;
                 maNum = 3;
             }
-            else if (canMove && apComp.stuck == 3 && maNum == 3)
+            if (canMove && apComp.stuck == 3 && maNum == 3)
             {
                 StartCoroutine(LP(transform.position, 0.3f));
             }
@@ -179,6 +183,8 @@ public class PlayerTurn : MonoBehaviour
             else if (apComp.stuck == 3 && maNum == 6)
             {
                 apComp.speed = speed;
+                apChecker.enabled = true;
+                apChecker.CheckRight();
                 maNum = -1;
                 apComp.stuck = 0;
             }
@@ -188,7 +194,8 @@ public class PlayerTurn : MonoBehaviour
             //Makes the player go right one space vvv
             if (apComp.stuck == 4 && maNum <= 0)
             {
-                apComp.speed = 0;
+                apComp.enabled = false;
+                apChecker.enabled = false;
                 transform.position = activePlayer.transform.position;
                 transform.Translate(Vector2.right * 0.74f);
                 touch = true;
@@ -205,7 +212,7 @@ public class PlayerTurn : MonoBehaviour
                 touch = true;
                 maNum = 3;
             }
-            else if (canMove && apComp.stuck == 4 && maNum == 3)
+            if (canMove && apComp.stuck == 4 && maNum == 3)
             {
                 StartCoroutine(LP(transform.position, 0.3f));
             }
@@ -223,6 +230,8 @@ public class PlayerTurn : MonoBehaviour
             else if (apComp.stuck == 4 && maNum == 6)
             {
                 apComp.speed = speed;
+                apChecker.enabled = true;
+                apChecker.CheckLeft();
                 maNum = -1;
                 apComp.stuck = 0;
             }
@@ -231,7 +240,10 @@ public class PlayerTurn : MonoBehaviour
         
         if (maNum <= -1)
         {
-            transform.position = new Vector2(0, 0);
+            apComp.speed = speed;
+            transform.position = new Vector2(50, 50);
+            apComp.enabled = true;
+            apChecker.enabled = true;
             maNum = 0;
         }
         //^^^^^
@@ -255,6 +267,7 @@ public class PlayerTurn : MonoBehaviour
         {
             maNum++;
             canMove = false;
+            apComp.moves--;
             StopAllCoroutines();
         }
     }

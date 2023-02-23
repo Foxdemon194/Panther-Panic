@@ -84,6 +84,7 @@ public class PlayerMove : MonoBehaviour
         else
         {
             stuck = 1;
+            checker.GetComponent<Checker>().check = false;
         }
     }
 
@@ -107,6 +108,7 @@ public class PlayerMove : MonoBehaviour
         else
         {
             stuck = 2;
+            checker.GetComponent<Checker>().check = false;
         }
     }
 
@@ -130,6 +132,7 @@ public class PlayerMove : MonoBehaviour
         else
         {
             stuck = 3;
+            checker.GetComponent<Checker>().check = false;
         }
     }
 
@@ -153,6 +156,7 @@ public class PlayerMove : MonoBehaviour
         else
         {
             stuck = 4;
+            checker.GetComponent<Checker>().check = false;
         }
     }
 
