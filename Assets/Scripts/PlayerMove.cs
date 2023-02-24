@@ -23,8 +23,6 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        //Fix the move counter, it's not working as intended
-
         currentX = Mathf.Round(transform.position.x * 100) / 100;
         currentY = Mathf.Round(transform.position.y * 100) / 100;
         targetX = Mathf.Round(target.position.x * 100) / 100;

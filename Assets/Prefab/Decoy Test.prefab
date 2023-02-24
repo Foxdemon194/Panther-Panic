@@ -102,7 +102,6 @@ MonoBehaviour:
   enemies:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
 --- !u!60 &2756070384848441325
 PolygonCollider2D:
   m_ObjectHideFlags: 0

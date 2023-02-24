@@ -10,6 +10,7 @@ public class Checker : MonoBehaviour
     public bool nav;
     public float test1;
     public bool check;
+    public bool isPlayer;
 
     void Update()
     {
@@ -96,6 +97,11 @@ public class Checker : MonoBehaviour
             grid = collision.gameObject;
             onGrid = true;
             nav = grid.GetComponent<GridMap>().navigable;
+        }
+
+        if (collision.gameObject.tag == "Player")
+        {
+            isPlayer = true;
         }
     }
     void OnTriggerExit2D(Collider2D collision)

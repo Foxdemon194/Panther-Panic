@@ -9,6 +9,8 @@ public class PlayerTurn : MonoBehaviour
     public PlayerMove apComp;
     public Checker apChecker;
     public GameObject[] enemy;
+    public Roaming[] enComp;
+    public Checker[] enChecker;
     public GameObject buttonMenu;
     public int num;
 
@@ -26,6 +28,7 @@ public class PlayerTurn : MonoBehaviour
     void Start()
     {
         apComp = activePlayer.GetComponent<PlayerMove>();
+
         playersTurn = true;
     }
 
@@ -34,6 +37,13 @@ public class PlayerTurn : MonoBehaviour
         activePlayer = players[num];
         apComp = activePlayer.GetComponent<PlayerMove>();
         apChecker = activePlayer.GetComponent<PlayerMove>().checker.GetComponent<Checker>();
+
+        for (int i = 0; i < enemy.Length; i++)
+        {
+            enComp[i] = enemy[i].GetComponent<Roaming>();
+            enChecker[i] = enemy[i].gameObject.GetComponent<Roaming>().checker.GetComponent<Checker>();
+        }
+
 
         if (apComp.moves <= 0 && playersTurn == false)
         {
@@ -222,16 +232,145 @@ public class PlayerTurn : MonoBehaviour
             maNum = 0;
         }
         //^^^^^
+
+        //Enemy vvv
+        for (int i = 0; i < enemy.Length; i++)
+        {
+            //All for Enemy vvvvv
+            if (enComp[i].stuck > 0)
+            {
+                if (enComp[i].moves <= 0)
+                {
+                    return;
+                }
+
+                //Makes the enemy go up one space vvv
+                if (enComp[i].stuck == 1 && maNum <= 0)
+                {
+                    transform.position = enemy[i].transform.position;
+                    transform.Translate(Vector2.up * 0.782f);
+                    touch = true;
+                    maNum = 1;
+                }
+                else if (canMove && enComp[i].stuck == 1 && maNum == 1)
+                {
+                    StartCoroutine(ELP(transform.position, 0.3f, i));
+                }
+                else if (enComp[i].stuck == 1 && maNum == 2)
+                {
+                    maNum = -1;
+                    enComp[i].stuck = 0;
+                }
+                //^^^
+
+                //Makes the enemy go down one space vvv
+                if (enComp[i].stuck == 2 && maNum <= 0)
+                {
+                    transform.position = enemy[i].transform.position;
+                    transform.Translate(Vector2.down * 0.782f);
+                    touch = true;
+                    maNum = 1;
+                }
+                else if (canMove && enComp[i].stuck == 2 && maNum == 1)
+                {
+                    StartCoroutine(ELP(transform.position, 0.3f, i));
+                }
+                else if (enComp[i].stuck == 2 && maNum == 2)
+                {
+                    maNum = -1;
+                    enComp[i].stuck = 0;
+                }
+                //^^^
+
+                //Makes the enemy go left one space vvv
+                if (enComp[i].stuck == 3 && maNum <= 0)
+                {
+                    enComp[i].enabled = false;
+                    enChecker[i].enabled = false;
+                    transform.position = enemy[i].transform.position;
+                    transform.Translate(Vector2.left * 0.74f);
+                    touch = true;
+                    maNum = 1;
+                }
+                else if (canMove && enComp[i].stuck == 3 && maNum == 1)
+                {
+                    StartCoroutine(ELP(transform.position, 0.3f, i));
+                }
+                else if (enComp[i].stuck == 3 && maNum == 2)
+                {
+                    transform.position = enemy[i].transform.position;
+                    transform.Translate(Vector2.up * 0.782f);
+                    touch = true;
+                    maNum = 3;
+                }
+                if (canMove && enComp[i].stuck == 3 && maNum == 3)
+                {
+                    StartCoroutine(ELP(transform.position, 0.3f, i));
+                }
+                else if (enComp[i].stuck == 3 && maNum == 4)
+                {
+                    enChecker[i].enabled = true;
+                    enChecker[i].CheckRight();
+                    maNum = -1;
+                    enComp[i].stuck = 0;
+                }
+                //^^^
+
+
+                //Makes the enemy go right one space vvv
+                if (enComp[i].stuck == 4 && maNum <= 0)
+                {
+                    enComp[i].enabled = false;
+                    enChecker[i].enabled = false;
+                    transform.position = enemy[i].transform.position;
+                    transform.Translate(Vector2.right * 0.74f);
+                    touch = true;
+                    maNum = 1;
+                }
+                else if (canMove && enComp[i].stuck == 4 && maNum == 1)
+                {
+                    StartCoroutine(ELP(transform.position, 0.3f, i));
+                }
+                else if (enComp[i].stuck == 4 && maNum == 2)
+                {
+                    transform.position = enemy[i].transform.position;
+                    transform.Translate(Vector2.down * 0.782f);
+                    touch = true;
+                    maNum = 3;
+                }
+                if (canMove && enComp[i].stuck == 4 && maNum == 3)
+                {
+                    StartCoroutine(ELP(transform.position, 0.3f, i));
+                }
+                else if (enComp[i].stuck == 4 && maNum == 4)
+                {
+                    enChecker[i].enabled = true;
+                    enChecker[i].CheckLeft();
+                    maNum = -1;
+                    enComp[i].stuck = 0;
+                }
+                //^^^
+            }
+
+            if (maNum <= -1)
+            {
+                transform.position = new Vector2(50, 50);
+                enComp[i].enabled = true;
+                enChecker[i].enabled = true;
+                maNum = 0;
+            }
+            //^^^^^
+        }
+        //^^^
     }
 
     IEnumerator LP(Vector2 newPosition, float duration)
     {
         float t = 0;
-        Vector2 currentPosition = activePlayer.transform.position;
 
         while (t < duration)
         {
-            activePlayer.transform.position = Vector2.Lerp(currentPosition, newPosition, t / duration);
+            activePlayer.transform.position = Vector2.Lerp(activePlayer.transform.position, newPosition, t / duration);
             t += Time.deltaTime;
             yield return null;
         }
@@ -242,7 +381,27 @@ public class PlayerTurn : MonoBehaviour
         {
             maNum++;
             canMove = false;
-            apComp.moves--;
+            StopAllCoroutines();
+        }
+    }
+
+    IEnumerator ELP(Vector2 newPosition, float duration, int i)
+    {
+        float t = 0;
+
+        while (t < duration)
+        {
+            enemy[i].transform.position = Vector2.Lerp(enemy[i].transform.position, newPosition, t / duration);
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        enemy[i].transform.position = newPosition;
+
+        if (enemy[i].transform.position.x == newPosition.x && enemy[i].transform.position.y == newPosition.y)
+        {
+            maNum++;
+            canMove = false;
             StopAllCoroutines();
         }
     }

@@ -16,10 +16,12 @@ public class Roaming : MonoBehaviour
     public float speed;
     public int moves = 3;
     public int movement;
-    public GameObject check;
-    public bool checking;
+    public GameObject checker;
+    public float checkX;
+    public float checkY;
+    public float stuck;
 
-    void Start()
+    private void Start()
     {
         ChangeTargetRand();
     }
@@ -30,37 +32,136 @@ public class Roaming : MonoBehaviour
         currentY = Mathf.Round(transform.position.y * 100) / 100;
         targetX = Mathf.Round(target.position.x * 100) / 100;
         targetY = Mathf.Round(target.position.y * 100) / 100;
+        checkX = Mathf.Round(checker.transform.position.x * 100) / 100;
+        checkY = Mathf.Round(checker.transform.position.y * 100) / 100;
 
         if (moves <= 0)
         {
+            moves = 0;
             StopMove();
-            CheckPlayer();
         }
-        if (moves > 0)
+        else
         {
-            CheckPlayer();
-
             if (currentX < targetX)
             {
-                MoveRight();
+                MovementR();
             }
             else if (currentX > targetX)
             {
-                MoveLeft();
+                MovementL();
             }
             else if (currentY < targetY)
             {
-                MoveUp();
+                MovementU();
             }
             else if (currentY > targetY)
             {
-                MoveDown();
+                MovementD();
             }
         }
 
         if (currentX == targetX && currentY == targetY)
         {
+            StopMove();
+            moves = 0;
             ChangeTargetRand();
+        }
+    }
+
+
+    void MovementR()
+    {
+        //Checks if it can move to the right...
+        checker.GetComponent<Checker>().CheckRight();
+        checker.GetComponent<Checker>().check = false;
+
+        //...if it can, it does
+        if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
+        {
+            MoveRight();
+
+            if (currentX >= checkX)
+            {
+                checker.GetComponent<Checker>().check = true;
+            }
+        }
+        //...if not, it tries going around
+        else
+        {
+            stuck = 1;
+            checker.GetComponent<Checker>().check = false;
+        }
+    }
+
+    void MovementL()
+    {
+        //Checks if it can move to the left...
+        checker.GetComponent<Checker>().CheckLeft();
+        checker.GetComponent<Checker>().check = false;
+
+        //...if it can, it does
+        if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
+        {
+            MoveLeft();
+
+            if (currentX <= checkX)
+            {
+                checker.GetComponent<Checker>().check = true;
+            }
+        }
+        //...if not, it tries going around
+        else
+        {
+            stuck = 2;
+            checker.GetComponent<Checker>().check = false;
+        }
+    }
+
+    void MovementU()
+    {
+        //Checks if it can move up...
+        checker.GetComponent<Checker>().CheckUp();
+        checker.GetComponent<Checker>().check = false;
+
+        //...if it can, it does
+        if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
+        {
+            MoveUp();
+
+            if (currentY >= checkY)
+            {
+                checker.GetComponent<Checker>().check = true;
+            }
+        }
+        //...if not, it tries going around
+        else
+        {
+            stuck = 3;
+            checker.GetComponent<Checker>().check = false;
+        }
+    }
+
+    void MovementD()
+    {
+        //Checks if it can move down...
+        checker.GetComponent<Checker>().CheckDown();
+        checker.GetComponent<Checker>().check = false;
+
+        //...if it can, it does
+        if (checker.GetComponent<Checker>().onGrid == true && checker.GetComponent<Checker>().nav == true)
+        {
+            MoveDown();
+
+            if (currentY <= checkY)
+            {
+                checker.GetComponent<Checker>().check = true;
+            }
+        }
+        //...if not, it tries going around
+        else
+        {
+            stuck = 4;
+            checker.GetComponent<Checker>().check = false;
         }
     }
 
@@ -97,7 +198,15 @@ public class Roaming : MonoBehaviour
     public void ChangeTargetRand()
     {
         rand = Random.Range(0, spaces.Length);
-        target = spaces[rand];
+        
+        if (spaces[rand].GetComponent<GridMap>().navigable)
+        {
+            target = spaces[rand];
+        }
+        else
+        {
+            ChangeTargetRand();
+        }
     }
 
     public void ChangeTarget()
@@ -108,51 +217,58 @@ public class Roaming : MonoBehaviour
 
     public void CheckPlayer()
     {
-        check.transform.position = new Vector2(transform.position.x + 1.4f, transform.position.y);
+        Debug.Log("YEAH");
+        checker.GetComponent<Checker>().CheckRight();
 
-        if (check.GetComponent<Checker>().player == false)
+        if (!checker.GetComponent<Checker>().isPlayer)
         {
-            check.transform.position = new Vector2(transform.position.x - 1.4f, transform.position.y);
+            checker.GetComponent<Checker>().CheckLeft();
 
-            if (check.GetComponent<Checker>().player == false)
+            if (!checker.GetComponent<Checker>().isPlayer)
             {
-                check.transform.position = new Vector2(transform.position.x, transform.position.y + 1.4f);
+                checker.GetComponent<Checker>().CheckUp();
 
-                if (check.GetComponent<Checker>().player == false)
+                if (!checker.GetComponent<Checker>().isPlayer)
                 {
-                    check.transform.position = new Vector2(transform.position.x, transform.position.y - 1.4f);
+                    checker.GetComponent<Checker>().CheckDown();
 
-                    if (check.GetComponent<Checker>().player == false)
+                    if (!checker.GetComponent<Checker>().isPlayer)
                     {
-                        check.transform.position = transform.position;
+                        checker.transform.position = transform.position;
                     }
                     else
                     {
                         //attack player on bottom side
                         AttackPlayer();
+                        return;
                     }
                 }
                 else
                 {
                     //attack player on top side
                     AttackPlayer();
+                    return;
                 }
             }
             else
             {
                 //attack player on left side
                 AttackPlayer();
+                return;
             }
         }
         else
         {
             //attack player on right side
             AttackPlayer();
+            return;
         }
     }
 
     public void AttackPlayer()
     {
-        
+        Debug.Log("Attack");
+        ChangeTargetRand();
+        moves += 3;
     }
 }
