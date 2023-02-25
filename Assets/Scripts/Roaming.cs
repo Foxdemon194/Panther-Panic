@@ -64,6 +64,7 @@ public class Roaming : MonoBehaviour
         {
             StopMove();
             moves = 0;
+            CheckPlayer();
             ChangeTargetRand();
         }
     }
@@ -217,58 +218,141 @@ public class Roaming : MonoBehaviour
 
     public void CheckPlayer()
     {
-        Debug.Log("YEAH");
-        checker.GetComponent<Checker>().CheckRight();
+        int counting = 0;
+        checker.GetComponent<Checker>().check = true;
 
-        if (!checker.GetComponent<Checker>().isPlayer)
+        if (counting <= 0)
+        {
+            checker.GetComponent<Checker>().CheckRight();
+
+            if (!checker.GetComponent<Checker>().isPlayer)
+            {
+                counting = 1;
+            }
+            else
+            {
+                AttackPlayer();
+            }
+        }
+        else if (counting == 1)
         {
             checker.GetComponent<Checker>().CheckLeft();
 
             if (!checker.GetComponent<Checker>().isPlayer)
             {
-                checker.GetComponent<Checker>().CheckUp();
-
-                if (!checker.GetComponent<Checker>().isPlayer)
-                {
-                    checker.GetComponent<Checker>().CheckDown();
-
-                    if (!checker.GetComponent<Checker>().isPlayer)
-                    {
-                        checker.transform.position = transform.position;
-                    }
-                    else
-                    {
-                        //attack player on bottom side
-                        AttackPlayer();
-                        return;
-                    }
-                }
-                else
-                {
-                    //attack player on top side
-                    AttackPlayer();
-                    return;
-                }
+                counting = 2;
             }
             else
             {
-                //attack player on left side
                 AttackPlayer();
-                return;
             }
         }
-        else
+        else if (counting == 2)
         {
-            //attack player on right side
-            AttackPlayer();
+            checker.GetComponent<Checker>().CheckUp();
+
+            if (!checker.GetComponent<Checker>().isPlayer)
+            {
+                counting = 3;
+            }
+            else
+            {
+                AttackPlayer();
+            }
+        }
+        else if (counting == 3)
+        {
+            checker.GetComponent<Checker>().CheckDown();
+
+            if (!checker.GetComponent<Checker>().isPlayer)
+            {
+                counting = 4;
+            }
+            else
+            {
+                AttackPlayer();
+            }
+        }
+        else if (counting > 5)
+        {
+            checker.GetComponent<Checker>().transform.position = transform.position;
+            return;
+        }
+    }
+
+    public void CheckPanther()
+    {
+        int counting = 0;
+        checker.GetComponent<Checker>().check = true;
+
+        if (counting <= 0)
+        {
+            checker.GetComponent<Checker>().CheckRight();
+
+            if (!checker.GetComponent<Checker>().isPanther)
+            {
+                counting = 1;
+            }
+            else
+            {
+                AttackPanther();
+            }
+        }
+        else if (counting == 1)
+        {
+            checker.GetComponent<Checker>().CheckLeft();
+
+            if (!checker.GetComponent<Checker>().isPanther)
+            {
+                counting = 2;
+            }
+            else
+            {
+                AttackPanther();
+            }
+        }
+        else if (counting == 2)
+        {
+            checker.GetComponent<Checker>().CheckUp();
+
+            if (!checker.GetComponent<Checker>().isPanther)
+            {
+                counting = 3;
+            }
+            else
+            {
+                AttackPanther();
+            }
+        }
+        else if (counting == 3)
+        {
+            checker.GetComponent<Checker>().CheckDown();
+
+            if (!checker.GetComponent<Checker>().isPanther)
+            {
+                counting = 4;
+            }
+            else
+            {
+                AttackPanther();
+            }
+        }
+        else if (counting > 5)
+        {
+            checker.GetComponent<Checker>().transform.position = transform.position;
             return;
         }
     }
 
     public void AttackPlayer()
     {
-        Debug.Log("Attack");
         ChangeTargetRand();
-        moves += 3;
+        moves = movement + 1;
+    }
+
+    public void AttackPanther()
+    {
+        ChangeTargetRand();
+        moves = movement + 1;
     }
 }

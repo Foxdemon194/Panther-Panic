@@ -14,6 +14,10 @@ public class PlayerTurn : MonoBehaviour
     public GameObject buttonMenu;
     public int num;
 
+    public GameObject[] panther;
+    public Panther[] pComp;
+    public Checker[] pChecker;
+
     public bool playersTurn;
     public bool enemysTurn;
     public int enTest;
@@ -23,7 +27,7 @@ public class PlayerTurn : MonoBehaviour
     public bool touch;
     public bool canMove;
 
-    public int maNum = 0;
+    int maNum = 0;
 
     void Start()
     {
@@ -44,6 +48,11 @@ public class PlayerTurn : MonoBehaviour
             enChecker[i] = enemy[i].gameObject.GetComponent<Roaming>().checker.GetComponent<Checker>();
         }
 
+        for (int i = 0; i < panther.Length; i++)
+        {
+            pComp[i] = panther[i].GetComponent<Panther>();
+            pChecker[i] = panther[i].gameObject.GetComponent<Panther>().checker.GetComponent<Checker>();
+        }
 
         if (apComp.moves <= 0 && playersTurn == false)
         {
@@ -56,6 +65,27 @@ public class PlayerTurn : MonoBehaviour
         }
 
         MoveAround();
+
+        if (apComp.rescue)
+        {
+            for (int i = 0; i < panther.Length; i++)
+            {
+                if (pComp[i].canRescue)
+                {
+                    pComp[i].rAttempts = (pComp[i].rAttempts / apComp.trust);
+
+                    if (pComp[i].rAttempts <= 0)
+                    {
+                        //rescue the panther
+                    }
+                    else
+                    {
+                        pComp[i].moves = pComp[i].movement;
+                        pComp[i].canRescue = false;
+                    }
+                }
+            }
+        }
     }
 
     public void EnemysTurn()
@@ -64,7 +94,8 @@ public class PlayerTurn : MonoBehaviour
         {
             for (int i = 0; i < enemy.Length; i++)
             {
-                enemy[i].GetComponent<Roaming>().moves = enemy[i].GetComponent<Roaming>().movement;
+                enComp[i].CheckPlayer();
+                enComp[i].moves = enComp[i].movement;
                 enTest++;
             }
 
@@ -74,7 +105,7 @@ public class PlayerTurn : MonoBehaviour
         {
             for (int i = 0; i < enemy.Length; i++)
             {
-                if (enemy[i].GetComponent<Roaming>().moves == 0)
+                if (enComp[i].moves == 0)
                 {
                     enTest--;
                 }
@@ -132,6 +163,7 @@ public class PlayerTurn : MonoBehaviour
             {
                 maNum = -1;
                 apComp.stuck = 0;
+                apChecker.check = true;
             }
             //^^^
 
@@ -151,6 +183,7 @@ public class PlayerTurn : MonoBehaviour
             {
                 maNum = -1;
                 apComp.stuck = 0;
+                apChecker.check = true;
             }
             //^^^
 
@@ -182,6 +215,7 @@ public class PlayerTurn : MonoBehaviour
             else if (apComp.stuck == 3 && maNum == 4)
             {
                 apChecker.enabled = true;
+                apChecker.check = true;
                 apChecker.CheckRight();
                 maNum = -1;
                 apComp.stuck = 0;
@@ -217,6 +251,7 @@ public class PlayerTurn : MonoBehaviour
             else if (apComp.stuck == 4 && maNum == 4)
             {
                 apChecker.enabled = true;
+                apChecker.check = true;
                 apChecker.CheckLeft();
                 maNum = -1;
                 apComp.stuck = 0;
@@ -362,6 +397,136 @@ public class PlayerTurn : MonoBehaviour
             //^^^^^
         }
         //^^^
+
+        //Panthers vvv
+        for (int i = 0; i < panther.Length; i++)
+        {
+            //All for Panthers vvvvv
+            if (pComp[i].stuck > 0)
+            {
+                if (pComp[i].moves <= 0)
+                {
+                    return;
+                }
+
+                //Makes the panther go up one space vvv
+                if (pComp[i].stuck == 1 && maNum <= 0)
+                {
+                    transform.position = panther[i].transform.position;
+                    transform.Translate(Vector2.up * 0.782f);
+                    touch = true;
+                    maNum = 1;
+                }
+                else if (canMove && pComp[i].stuck == 1 && maNum == 1)
+                {
+                    StartCoroutine(PLP(transform.position, 0.3f, i));
+                }
+                else if (pComp[i].stuck == 1 && maNum == 2)
+                {
+                    maNum = -1;
+                    pComp[i].stuck = 0;
+                }
+                //^^^
+
+                //Makes the panther go down one space vvv
+                if (pComp[i].stuck == 2 && maNum <= 0)
+                {
+                    transform.position = panther[i].transform.position;
+                    transform.Translate(Vector2.down * 0.782f);
+                    touch = true;
+                    maNum = 1;
+                }
+                else if (canMove && pComp[i].stuck == 2 && maNum == 1)
+                {
+                    StartCoroutine(PLP(transform.position, 0.3f, i));
+                }
+                else if (pComp[i].stuck == 2 && maNum == 2)
+                {
+                    maNum = -1;
+                    pComp[i].stuck = 0;
+                }
+                //^^^
+
+                //Makes the panther go left one space vvv
+                if (pComp[i].stuck == 3 && maNum <= 0)
+                {
+                    pComp[i].enabled = false;
+                    pChecker[i].enabled = false;
+                    transform.position = panther[i].transform.position;
+                    transform.Translate(Vector2.left * 0.74f);
+                    touch = true;
+                    maNum = 1;
+                }
+                else if (canMove && pComp[i].stuck == 3 && maNum == 1)
+                {
+                    StartCoroutine(PLP(transform.position, 0.3f, i));
+                }
+                else if (pComp[i].stuck == 3 && maNum == 2)
+                {
+                    transform.position = panther[i].transform.position;
+                    transform.Translate(Vector2.up * 0.782f);
+                    touch = true;
+                    maNum = 3;
+                }
+                if (canMove && pComp[i].stuck == 3 && maNum == 3)
+                {
+                    StartCoroutine(PLP(transform.position, 0.3f, i));
+                }
+                else if (pComp[i].stuck == 3 && maNum == 4)
+                {
+                    pChecker[i].enabled = true;
+                    pChecker[i].CheckRight();
+                    maNum = -1;
+                    pComp[i].stuck = 0;
+                }
+                //^^^
+
+
+                //Makes the panther go right one space vvv
+                if (pComp[i].stuck == 4 && maNum <= 0)
+                {
+                    pComp[i].enabled = false;
+                    pChecker[i].enabled = false;
+                    transform.position = panther[i].transform.position;
+                    transform.Translate(Vector2.right * 0.74f);
+                    touch = true;
+                    maNum = 1;
+                }
+                else if (canMove && pComp[i].stuck == 4 && maNum == 1)
+                {
+                    StartCoroutine(PLP(transform.position, 0.3f, i));
+                }
+                else if (pComp[i].stuck == 4 && maNum == 2)
+                {
+                    transform.position = panther[i].transform.position;
+                    transform.Translate(Vector2.down * 0.782f);
+                    touch = true;
+                    maNum = 3;
+                }
+                if (canMove && pComp[i].stuck == 4 && maNum == 3)
+                {
+                    StartCoroutine(PLP(transform.position, 0.3f, i));
+                }
+                else if (pComp[i].stuck == 4 && maNum == 4)
+                {
+                    pChecker[i].enabled = true;
+                    pChecker[i].CheckLeft();
+                    maNum = -1;
+                    pComp[i].stuck = 0;
+                }
+                //^^^
+            }
+
+            if (maNum <= -1)
+            {
+                transform.position = new Vector2(50, 50);
+                pComp[i].enabled = true;
+                pChecker[i].enabled = true;
+                maNum = 0;
+            }
+            //^^^^^
+        }
+        //^^^
     }
 
     IEnumerator LP(Vector2 newPosition, float duration)
@@ -405,6 +570,26 @@ public class PlayerTurn : MonoBehaviour
             StopAllCoroutines();
         }
     }
+    IEnumerator PLP(Vector2 newPosition, float duration, int i)
+    {
+        float t = 0;
+
+        while (t < duration)
+        {
+            panther[i].transform.position = Vector2.Lerp(panther[i].transform.position, newPosition, t / duration);
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        panther[i].transform.position = newPosition;
+
+        if (panther[i].transform.position.x == newPosition.x && panther[i].transform.position.y == newPosition.y)
+        {
+            maNum++;
+            canMove = false;
+            StopAllCoroutines();
+        }
+    }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -415,6 +600,71 @@ public class PlayerTurn : MonoBehaviour
                 canMove = true;
                 touch = false;
             }
+        }
+    }
+
+    public void CheckPanther()
+    {
+        int counting = 0;
+        apChecker.check = true;
+
+        if (counting <= 0)
+        {
+            apChecker.CheckRight();
+
+            if (apChecker.isPanther)
+            {
+                apComp.Rescue();
+            }
+            else
+            {
+                counting = 1;
+            }
+        }
+        else if (counting == 1)
+        {
+            apChecker.CheckLeft();
+
+            if (apChecker.isPanther)
+            {
+                apComp.Rescue();
+            }
+            else
+            {
+                counting = 2;
+            }
+        }
+        else if (counting == 2)
+        {
+            apChecker.CheckUp();
+
+            if (apChecker.isPanther)
+            {
+                apComp.Rescue();
+            }
+            else
+            {
+                counting = 3;
+            }
+        }
+        else if (counting == 3)
+        {
+            apChecker.CheckDown();
+
+            if (apChecker.isPanther)
+            {
+                apComp.Rescue();
+            }
+            else
+            {
+                counting = 4;
+            }
+        }
+        else if (counting >= 4)
+        {
+            apChecker.transform.position = activePlayer.transform.position;
+            counting = 0;
+            return;
         }
     }
 }

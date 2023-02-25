@@ -11,6 +11,7 @@ public class Checker : MonoBehaviour
     public float test1;
     public bool check;
     public bool isPlayer;
+    public bool isPanther;
 
     void Update()
     {
@@ -90,7 +91,7 @@ public class Checker : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Grid")
         {
@@ -102,6 +103,12 @@ public class Checker : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isPlayer = true;
+        }
+
+        if (collision.gameObject.tag == "Panther")
+        {
+            isPanther = true;
+            collision.GetComponent<Panther>().canRescue = true;
         }
     }
     void OnTriggerExit2D(Collider2D collision)

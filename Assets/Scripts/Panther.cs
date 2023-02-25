@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerMove : MonoBehaviour
+public class Panther : MonoBehaviour
 {
+    //Makes the panther run away X amount of times
+    //Panther gets hurt by poachers
+
     public Transform target;
     public Transform[] spaces;
     public float targetY;
@@ -20,8 +22,13 @@ public class PlayerMove : MonoBehaviour
     public float checkX;
     public float checkY;
     public float stuck;
-    public bool rescue;
-    public int trust;
+    public bool canRescue;
+    public int rAttempts;
+
+    private void Start()
+    {
+        ChangeTargetRand();
+    }
 
     void Update()
     {
@@ -61,6 +68,7 @@ public class PlayerMove : MonoBehaviour
         {
             StopMove();
             moves = 0;
+            ChangeTargetRand();
         }
     }
 
@@ -191,14 +199,17 @@ public class PlayerMove : MonoBehaviour
         transform.Translate(Vector2.zero);
     }
 
-    public void ChangeTarget()
+    public void ChangeTargetRand()
     {
-        target = spaces[newTarget];
-        moves = movement;
-    }
+        rand = Random.Range(0, spaces.Length);
 
-    public void Rescue()
-    {
-        rescue = true;
+        if (spaces[rand].GetComponent<GridMap>().navigable)
+        {
+            target = spaces[rand];
+        }
+        else
+        {
+            ChangeTargetRand();
+        }
     }
 }
