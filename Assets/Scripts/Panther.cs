@@ -24,6 +24,7 @@ public class Panther : MonoBehaviour
     public float stuck;
     public bool canRescue;
     public int rAttempts;
+    public int health;
 
     private void Start()
     {
@@ -39,6 +40,8 @@ public class Panther : MonoBehaviour
         checkX = Mathf.Round(checker.transform.position.x * 100) / 100;
         checkY = Mathf.Round(checker.transform.position.y * 100) / 100;
 
+
+        
         if (moves <= 0)
         {
             moves = 0;

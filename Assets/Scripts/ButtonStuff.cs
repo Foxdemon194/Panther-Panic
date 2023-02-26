@@ -58,9 +58,15 @@ public class ButtonStuff : MonoBehaviour
         help.SetActive(true);
     }
 
-    public void hBack()
+    public void HBack()
     {
         help.SetActive(false);
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Game 2");
     }
 
     public void QuitLevel()

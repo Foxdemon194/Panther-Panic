@@ -36,6 +36,11 @@ public class MenuStuff : MonoBehaviour
         SceneManager.LoadScene("Game 2");
     }
 
+    public void Intro1()
+    {
+        SceneManager.LoadScene("Level 1 Intro");
+    }
+
     public void HowToPlay()
     {
         SetInactive();

@@ -27,6 +27,8 @@ public class PlayerMove : MonoBehaviour
     public bool hurt;
 
     public Slider healthDisp;
+    public GameObject icon;
+    public Sprite hIcon;
 
     void Update()
     {
@@ -38,6 +40,11 @@ public class PlayerMove : MonoBehaviour
         checkY = Mathf.Round(checker.transform.position.y * 100) / 100;
 
         healthDisp.value = health;
+
+        if (health <= health / 2)
+        {
+            icon.GetComponent<Image>().sprite = hIcon;
+        }
 
         if (health <= 0)
         {

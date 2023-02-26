@@ -30,7 +30,7 @@ public class PlayerTurn : MonoBehaviour
 
     int maNum = 0;
     int counting = 0;
-    int[] playerCount;
+    public int[] playerCount;
 
     public GameObject winMenu;
     public GameObject loseMenu;
@@ -57,7 +57,6 @@ public class PlayerTurn : MonoBehaviour
 
             if ((playerCount[0] + playerCount[1] + playerCount[2] + playerCount[3]) >= 4)
             {
-                //lose
                 loseMenu.SetActive(true);
                 Time.timeScale = 0;
             }
