@@ -17,6 +17,7 @@ public class PlayerTurn : MonoBehaviour
     public GameObject[] panther;
     public Panther[] pComp;
     public Checker[] pChecker;
+    public int rescuedPanthers;
 
     public bool playersTurn;
     public bool enemysTurn;
@@ -28,6 +29,9 @@ public class PlayerTurn : MonoBehaviour
     public bool canMove;
 
     int maNum = 0;
+    int counting = 0;
+
+    public GameObject winMenu;
 
     void Start()
     {
@@ -72,19 +76,33 @@ public class PlayerTurn : MonoBehaviour
             {
                 if (pComp[i].canRescue)
                 {
-                    pComp[i].rAttempts = (pComp[i].rAttempts / apComp.trust);
+                    pComp[i].rAttempts -= apComp.trust;
+
+                    pComp[i].canRescue = false;
+
 
                     if (pComp[i].rAttempts <= 0)
                     {
-                        //rescue the panther
+                        panther[i].SetActive(false);
+                        rescuedPanthers++;
                     }
                     else
                     {
                         pComp[i].moves = pComp[i].movement;
                         pComp[i].canRescue = false;
                     }
+
+                    apComp.rescue = false;
                 }
             }
+        }
+
+        //Win screen
+        //maybe play music here too?
+        if (rescuedPanthers >= panther.Length)
+        {
+            Time.timeScale = 0;
+            winMenu.SetActive(true);
         }
     }
 
@@ -605,7 +623,6 @@ public class PlayerTurn : MonoBehaviour
 
     public void CheckPanther()
     {
-        int counting = 0;
         apChecker.check = true;
 
         if (counting <= 0)
@@ -621,7 +638,7 @@ public class PlayerTurn : MonoBehaviour
                 counting = 1;
             }
         }
-        else if (counting == 1)
+        if (counting == 1)
         {
             apChecker.CheckLeft();
 
@@ -634,7 +651,7 @@ public class PlayerTurn : MonoBehaviour
                 counting = 2;
             }
         }
-        else if (counting == 2)
+        if (counting == 2)
         {
             apChecker.CheckUp();
 
@@ -647,7 +664,7 @@ public class PlayerTurn : MonoBehaviour
                 counting = 3;
             }
         }
-        else if (counting == 3)
+        if (counting == 3)
         {
             apChecker.CheckDown();
 
@@ -660,7 +677,7 @@ public class PlayerTurn : MonoBehaviour
                 counting = 4;
             }
         }
-        else if (counting >= 4)
+        if (counting >= 4)
         {
             apChecker.transform.position = activePlayer.transform.position;
             counting = 0;

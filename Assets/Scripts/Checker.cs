@@ -118,5 +118,16 @@ public class Checker : MonoBehaviour
             grid = null; 
             onGrid = false;
         }
+
+        if (collision.gameObject.tag == "Player")
+        {
+            isPlayer = false;
+        }
+
+        if (collision.gameObject.tag == "Panther")
+        {
+            isPanther = false;
+            collision.GetComponent<Panther>().canRescue = false;
+        }
     }
 }
