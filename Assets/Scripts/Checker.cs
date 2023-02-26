@@ -103,7 +103,10 @@ public class Checker : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isPlayer = true;
-            collision.GetComponent<PlayerMove>().attacked = true;
+            if (player.tag != "Player")
+            {
+                collision.GetComponent<PlayerMove>().attacked = true;
+            }
         }
 
         if (collision.gameObject.tag == "Panther")
