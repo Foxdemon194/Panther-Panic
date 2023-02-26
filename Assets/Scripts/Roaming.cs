@@ -20,6 +20,8 @@ public class Roaming : MonoBehaviour
     public float checkX;
     public float checkY;
     public float stuck;
+    public bool attack;
+    public bool attackP;
 
     private void Start()
     {
@@ -346,13 +348,11 @@ public class Roaming : MonoBehaviour
 
     public void AttackPlayer()
     {
-        ChangeTargetRand();
-        moves = movement + 1;
+        attack = true;
     }
 
     public void AttackPanther()
     {
-        ChangeTargetRand();
-        moves = movement + 1;
+        attackP = true;
     }
 }

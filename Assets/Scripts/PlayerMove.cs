@@ -22,6 +22,11 @@ public class PlayerMove : MonoBehaviour
     public float stuck;
     public bool rescue;
     public int trust;
+    public int health;
+    public bool attacked;
+    public bool hurt;
+
+    public Slider healthDisp;
 
     void Update()
     {
@@ -31,6 +36,17 @@ public class PlayerMove : MonoBehaviour
         targetY = Mathf.Round(target.position.y * 100) / 100;
         checkX = Mathf.Round(checker.transform.position.x * 100) / 100;
         checkY = Mathf.Round(checker.transform.position.y * 100) / 100;
+
+        healthDisp.value = health;
+
+        if (health <= 0)
+        {
+            health = 0;
+            moves = 0;
+            movement = 0;
+            hurt = true;
+            //change the sprite maybe??
+        }
 
         if (moves <= 0)
         {

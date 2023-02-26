@@ -1812,6 +1812,8 @@ MonoBehaviour:
   checkX: 0
   checkY: 0
   stuck: 0
+  attack: 0
+  attackP: 0
 --- !u!1 &197818396 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6328963033248645806, guid: 7f8e71a772c7a454f8a69a96cfb69470, type: 3}
@@ -3264,6 +3266,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: health
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1175005378}
@@ -3275,6 +3281,10 @@ PrefabInstance:
       propertyPath: movement
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: healthDisp
+      value: 
+      objectReference: {fileID: 819275707}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: spaces.Array.size
       value: 54
@@ -4060,6 +4070,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: health
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1175005378}
@@ -4071,6 +4085,10 @@ PrefabInstance:
       propertyPath: movement
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: healthDisp
+      value: 
+      objectReference: {fileID: 99001564}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: spaces.Array.size
       value: 54
@@ -6355,6 +6373,8 @@ MonoBehaviour:
   checkX: 0
   checkY: 0
   stuck: 0
+  attack: 0
+  attackP: 0
 --- !u!1 &578217069 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6328963034534049232, guid: 7f8e71a772c7a454f8a69a96cfb69470, type: 3}
@@ -6513,6 +6533,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: health
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: speedX
       value: 0.74
       objectReference: {fileID: 0}
@@ -6532,6 +6556,10 @@ PrefabInstance:
       propertyPath: movement
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: healthDisp
+      value: 
+      objectReference: {fileID: 647245183}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: spaces.Array.size
       value: 54
@@ -23028,6 +23056,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: health
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1175005378}
@@ -23035,6 +23067,10 @@ PrefabInstance:
       propertyPath: checker
       value: 
       objectReference: {fileID: 1967566890}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: healthDisp
+      value: 
+      objectReference: {fileID: 1524757772}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: spaces.Array.size
       value: 54

@@ -30,8 +30,10 @@ public class PlayerTurn : MonoBehaviour
 
     int maNum = 0;
     int counting = 0;
+    int[] playerCount;
 
     public GameObject winMenu;
+    public GameObject loseMenu;
 
     void Start()
     {
@@ -45,6 +47,21 @@ public class PlayerTurn : MonoBehaviour
         activePlayer = players[num];
         apComp = activePlayer.GetComponent<PlayerMove>();
         apChecker = activePlayer.GetComponent<PlayerMove>().checker.GetComponent<Checker>();
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i].GetComponent<PlayerMove>().hurt)
+            {
+                playerCount[i] = 1;
+            }
+
+            if ((playerCount[0] + playerCount[1] + playerCount[2] + playerCount[3]) >= 4)
+            {
+                //lose
+                loseMenu.SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
 
         for (int i = 0; i < enemy.Length; i++)
         {
@@ -93,6 +110,24 @@ public class PlayerTurn : MonoBehaviour
                     }
 
                     apComp.rescue = false;
+                }
+            }
+        }
+
+        for (int i = 0; i < enemy.Length; i++)
+        {
+            if (enComp[i].attack)
+            {
+                for (int x = 0; x < players.Length; x++)
+                {
+                    if (players[x].GetComponent<PlayerMove>().attacked)
+                    {
+                        players[x].GetComponent<PlayerMove>().health--;
+
+                        players[x].GetComponent<PlayerMove>().attacked = false;
+
+                        enComp[i].attack = false;
+                    }
                 }
             }
         }
