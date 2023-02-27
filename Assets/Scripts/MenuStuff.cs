@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
+//using UnityEditor.SceneManagement; | temporarily commented out to prepare for build version - gisselle
 using UnityEngine.SceneManagement;
 
 public class MenuStuff : MonoBehaviour
@@ -55,7 +55,9 @@ public class MenuStuff : MonoBehaviour
 
     public void Quit()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false; | temporarily commented out to prepare for build version - gisselle
+
+        Application.Quit(); //feel free to comment this one out when we're only using the editor - gisselle
     }
 
     void SetInactive()
