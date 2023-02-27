@@ -103,7 +103,8 @@ public class Checker : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isPlayer = true;
-            if (player.tag != "Player")
+
+            if (player.tag != "Player" || player.tag != "Panther")
             {
                 collision.GetComponent<PlayerMove>().attacked = true;
             }
@@ -112,7 +113,11 @@ public class Checker : MonoBehaviour
         if (collision.gameObject.tag == "Panther")
         {
             isPanther = true;
-            collision.GetComponent<Panther>().canRescue = true;
+
+            if (player.tag != "Enemy" || player.tag != "Panther")
+            {
+                collision.GetComponent<Panther>().canRescue = true;
+            }
         }
     }
     void OnTriggerExit2D(Collider2D collision)
