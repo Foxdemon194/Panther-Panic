@@ -41,8 +41,8 @@ public class Panther : MonoBehaviour
         checkY = Mathf.Round(checker.transform.position.y * 100) / 100;
 
 
-        
-        if (moves <= 0)
+
+        if (moves <= 0 && checkX == currentX && checkY == currentY)
         {
             moves = 0;
             StopMove();

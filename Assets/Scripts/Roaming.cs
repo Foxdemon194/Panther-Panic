@@ -37,7 +37,7 @@ public class Roaming : MonoBehaviour
         checkX = Mathf.Round(checker.transform.position.x * 100) / 100;
         checkY = Mathf.Round(checker.transform.position.y * 100) / 100;
 
-        if (moves <= 0)
+        if (moves <= 0 && checkX == currentX && checkY == currentY)
         {
             moves = 0;
             StopMove();

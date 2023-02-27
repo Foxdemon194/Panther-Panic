@@ -55,7 +55,7 @@ public class PlayerMove : MonoBehaviour
             //change the sprite maybe??
         }
 
-        if (moves <= 0)
+        if (moves <= 0 && checkX == currentX && checkY == currentY)
         {
             moves = 0;
             StopMove();
