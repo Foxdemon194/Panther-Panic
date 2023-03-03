@@ -3159,7 +3159,12 @@ MonoBehaviour:
   stuck: 0
   canRescue: 0
   rAttempts: 4
-  health: 0
+  health: 3
+  attacked: 0
+  hurt: 0
+  icon: {fileID: 368577278}
+  hIcon: {fileID: 21300000, guid: 5789d30f512caca4aa1881a8e3d8767e, type: 3}
+  lIcon: {fileID: 21300000, guid: f6321e45baf5b1b4bb783d932d9fffe0, type: 3}
 --- !u!50 &368577283
 Rigidbody2D:
   serializedVersion: 4
@@ -26279,6 +26284,10 @@ PrefabInstance:
     - target: {fileID: 1582536335486013990, guid: d469f980ec422a145884c99c06ed7509, type: 3}
       propertyPath: playerCount.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582536335486013990, guid: d469f980ec422a145884c99c06ed7509, type: 3}
+      propertyPath: pantherCount.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1582536335486013991, guid: d469f980ec422a145884c99c06ed7509, type: 3}
       propertyPath: m_RootOrder

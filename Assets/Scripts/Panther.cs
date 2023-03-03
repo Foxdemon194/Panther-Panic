@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Panther : MonoBehaviour
 {
@@ -26,6 +27,13 @@ public class Panther : MonoBehaviour
     public int rAttempts;
     public int health;
 
+    public bool attacked;
+    public bool hurt;
+
+    public GameObject icon;
+    public Sprite hIcon;
+    public Sprite lIcon;
+
     private void Start()
     {
         ChangeTargetRand();
@@ -40,7 +48,23 @@ public class Panther : MonoBehaviour
         checkX = Mathf.Round(checker.transform.position.x * 100) / 100;
         checkY = Mathf.Round(checker.transform.position.y * 100) / 100;
 
+        if (health <= health / 2 && health > 1)
+        {
+            icon.GetComponent<Image>().sprite = hIcon;
+        }
+        else if (health <= 1)
+        {
+            icon.GetComponent<Image>().sprite = lIcon;
+        }
 
+        if (health <= 0)
+        {
+            health = 0;
+            moves = 0;
+            movement = 0;
+            hurt = true;
+            //change the sprite maybe??
+        }
 
         if (moves <= 0 && checkX == currentX && checkY == currentY)
         {

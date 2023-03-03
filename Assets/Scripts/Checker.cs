@@ -118,6 +118,11 @@ public class Checker : MonoBehaviour
             {
                 collision.GetComponent<Panther>().canRescue = true;
             }
+
+            if (player.tag != "Player" || player.tag != "Panther")
+            {
+                collision.GetComponent<Panther>().attacked = true;
+            }
         }
     }
     void OnTriggerExit2D(Collider2D collision)

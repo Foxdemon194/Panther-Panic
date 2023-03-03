@@ -31,6 +31,7 @@ public class PlayerTurn : MonoBehaviour
     int maNum = 0;
     int counting = 0;
     public int[] playerCount;
+    public int[] pantherCount;
 
     public GameObject winMenu;
     public GameObject loseMenu;
@@ -55,7 +56,21 @@ public class PlayerTurn : MonoBehaviour
                 playerCount[i] = 1;
             }
 
-            if ((playerCount[0] + playerCount[1] + playerCount[2] + playerCount[3]) >= 4)
+            if (SumArray(playerCount) >= players.Length)
+            {
+                loseMenu.SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
+
+        for (int i = 0; i < panther.Length; i++)
+        {
+            if (panther[i].GetComponent<Panther>().hurt)
+            {
+                pantherCount[i] = 1;
+            }
+
+            if (SumArray(pantherCount) >= panther.Length)
             {
                 loseMenu.SetActive(true);
                 Time.timeScale = 0;
@@ -128,6 +143,18 @@ public class PlayerTurn : MonoBehaviour
                         enComp[i].attack = false;
                     }
                 }
+
+                for (int x = 0; x < panther.Length; x++)
+                {
+                    if (panther[x].GetComponent<Panther>().attacked)
+                    {
+                        panther[x].GetComponent<Panther>().health--;
+
+                        panther[x].GetComponent<Panther>().attacked = false;
+
+                        enComp[i].attack = false;
+                    }
+                }
             }
         }
 
@@ -147,6 +174,7 @@ public class PlayerTurn : MonoBehaviour
             for (int i = 0; i < enemy.Length; i++)
             {
                 enComp[i].CheckPlayer();
+                enComp[i].CheckPanther();
                 enComp[i].moves = enComp[i].movement;
                 enTest++;
             }
@@ -717,5 +745,17 @@ public class PlayerTurn : MonoBehaviour
             counting = 0;
             return;
         }
+    }
+
+    public int SumArray(int[] toBeSummed)
+    {
+        int sum = 0;
+
+        foreach (int item in toBeSummed)
+        {
+            sum += item;
+        }
+
+        return sum;
     }
 }
