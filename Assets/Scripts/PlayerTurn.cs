@@ -38,6 +38,16 @@ public class PlayerTurn : MonoBehaviour
 
     void Start()
     {
+        for (int i = 0; i < playerCount.Length; i++)
+        {
+            playerCount[i] = 0;
+        }
+
+        for (int i = 0; i < pantherCount.Length; i++)
+        {
+            pantherCount[i] = 0;
+        }
+
         apComp = activePlayer.GetComponent<PlayerMove>();
 
         playersTurn = true;
@@ -123,6 +133,7 @@ public class PlayerTurn : MonoBehaviour
                         pComp[i].canRescue = false;
                     }
 
+                    pComp[i].ChangeTargetRand();
                     apComp.rescue = false;
                 }
             }
@@ -143,14 +154,21 @@ public class PlayerTurn : MonoBehaviour
                         enComp[i].attack = false;
                     }
                 }
+            }
 
+            if (enComp[i].attackP)
+            {
                 for (int x = 0; x < panther.Length; x++)
                 {
-                    if (panther[x].GetComponent<Panther>().attacked)
+                    if (pComp[x].attacked)
                     {
-                        panther[x].GetComponent<Panther>().health--;
+                        pComp[x].health--;
 
-                        panther[x].GetComponent<Panther>().attacked = false;
+                        pComp[x].attacked = false;
+
+                        pComp[x].moves = pComp[x].movement;
+
+                        pComp[x].ChangeTargetRand();
 
                         enComp[i].attack = false;
                     }

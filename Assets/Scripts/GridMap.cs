@@ -7,6 +7,7 @@ public class GridMap : MonoBehaviour
     public bool navigable;
     bool pPassed;
     bool ePassed;
+    bool panther;
     public GameObject manager;
     public float tolerance = 0.01f;
 
@@ -27,6 +28,17 @@ public class GridMap : MonoBehaviour
                 if (collision.gameObject == manager.GetComponent<PlayerTurn>().enemy[i])
                 {
                     ePassed = true;
+                }
+            }
+        }
+
+        if (collision.tag == "Panther")
+        {
+            for (int i = 0; i < manager.GetComponent<PlayerTurn>().panther.Length; i++)
+            {
+                if (collision.gameObject == manager.GetComponent<PlayerTurn>().panther[i])
+                {
+                    panther = true;
                 }
             }
         }
@@ -68,6 +80,27 @@ public class GridMap : MonoBehaviour
                     {
                         manager.GetComponent<PlayerTurn>().enemy[i].GetComponent<Roaming>().moves--;
                         ePassed = false;
+                    }
+                }
+            }
+        }
+
+        if (panther)
+        {
+            for (int i = 0; i < manager.GetComponent<PlayerTurn>().panther.Length; i++)
+            {
+                if (manager.GetComponent<PlayerTurn>().panther[i].transform.position == transform.position)
+                {
+                    manager.GetComponent<PlayerTurn>().panther[i].GetComponent<Panther>().moves--;
+                }
+                else if (manager.GetComponent<PlayerTurn>().panther[i].transform.position.x >= transform.position.x - tolerance ||
+                         manager.GetComponent<PlayerTurn>().panther[i].transform.position.x <= transform.position.x + tolerance)
+                {
+                    if (manager.GetComponent<PlayerTurn>().panther[i].transform.position.y >= transform.position.y - tolerance ||
+                        manager.GetComponent<PlayerTurn>().panther[i].transform.position.y <= transform.position.y + tolerance)
+                    {
+                        manager.GetComponent<PlayerTurn>().panther[i].GetComponent<Panther>().moves--;
+                        panther = false;
                     }
                 }
             }

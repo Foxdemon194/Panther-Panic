@@ -48,13 +48,13 @@ public class Panther : MonoBehaviour
         checkX = Mathf.Round(checker.transform.position.x * 100) / 100;
         checkY = Mathf.Round(checker.transform.position.y * 100) / 100;
 
-        if (health <= health / 2 && health > 1)
+        if (health == 2)
         {
-            icon.GetComponent<Image>().sprite = hIcon;
+            icon.GetComponent<SpriteRenderer>().sprite = hIcon;
         }
         else if (health <= 1)
         {
-            icon.GetComponent<Image>().sprite = lIcon;
+            icon.GetComponent<SpriteRenderer>().sprite = lIcon;
         }
 
         if (health <= 0)
@@ -95,7 +95,6 @@ public class Panther : MonoBehaviour
         {
             StopMove();
             moves = 0;
-            ChangeTargetRand();
         }
     }
 

@@ -1608,11 +1608,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659169, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.11
+      value: 1.1100001
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659169, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.129
+      value: 3.125
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659169, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3042,7 +3042,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368577278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.13, y: 0, z: 0}
+  m_LocalPosition: {x: -1.12, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3598,6 +3598,10 @@ PrefabInstance:
       propertyPath: icon
       value: 
       objectReference: {fileID: 674734934}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: decoy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: hIcon
       value: 
@@ -4411,6 +4415,10 @@ PrefabInstance:
       propertyPath: icon
       value: 
       objectReference: {fileID: 2044282496}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: decoy
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: hIcon
       value: 
@@ -6456,11 +6464,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659169, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.11
+      value: -1.122
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659169, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.121
+      value: 3.125
       objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659169, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6980,6 +6988,10 @@ PrefabInstance:
       propertyPath: icon
       value: 
       objectReference: {fileID: 1392248950}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: decoy
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: hIcon
       value: 
@@ -9893,7 +9905,6 @@ MonoBehaviour:
   character: {fileID: 1557302978}
   pressed: 0
   gButton: 0
-  dButton: 0
   playerUI:
   - {fileID: 1748363795}
   - {fileID: 1107738503}
@@ -24306,6 +24317,10 @@ PrefabInstance:
       propertyPath: icon
       value: 
       objectReference: {fileID: 1440817152}
+    - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: decoy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9163043197144659181, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: hIcon
       value: 

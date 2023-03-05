@@ -21,6 +21,7 @@ public class PlayerMove : MonoBehaviour
     public float checkY;
     public float stuck;
     public bool rescue;
+    public int decoy;
     public int trust;
     public int health;
     public bool attacked;

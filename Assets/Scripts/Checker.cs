@@ -104,7 +104,7 @@ public class Checker : MonoBehaviour
         {
             isPlayer = true;
 
-            if (player.tag != "Player" || player.tag != "Panther")
+            if (player.tag == "Enemy")
             {
                 collision.GetComponent<PlayerMove>().attacked = true;
             }
@@ -114,12 +114,12 @@ public class Checker : MonoBehaviour
         {
             isPanther = true;
 
-            if (player.tag != "Enemy" || player.tag != "Panther")
+            if (player.tag == "Player")
             {
                 collision.GetComponent<Panther>().canRescue = true;
             }
 
-            if (player.tag != "Player" || player.tag != "Panther")
+            if (player.tag == "Enemy")
             {
                 collision.GetComponent<Panther>().attacked = true;
             }
