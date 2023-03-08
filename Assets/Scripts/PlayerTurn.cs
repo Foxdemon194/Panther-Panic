@@ -111,6 +111,10 @@ public class PlayerTurn : MonoBehaviour
 
         MoveAround();
 
+        //Change so that ou can only do one thing per turn.
+        //ex. you can move, OR rescue, OR place a decoy
+        PlayerPantherInteraction();
+
         if (apComp.rescue)
         {
             for (int i = 0; i < panther.Length; i++)
@@ -192,7 +196,9 @@ public class PlayerTurn : MonoBehaviour
             for (int i = 0; i < enemy.Length; i++)
             {
                 enComp[i].CheckPlayer();
+                EnemyPlayerInteraction();
                 enComp[i].CheckPanther();
+                EnemyPantherInteraction();
                 enComp[i].moves = enComp[i].movement;
                 enTest++;
             }
@@ -703,65 +709,55 @@ public class PlayerTurn : MonoBehaviour
 
     public void CheckPanther()
     {
-        apChecker.check = true;
-
-        if (counting <= 0)
+        Debug.Log("hi");
+        apComp.intBox.SetActive(true);
+        
+        if (apComp.intBox.GetComponent<Interaction>().panther)
         {
-            apChecker.CheckRight();
+            apComp.Rescue();
+        }
+        else
+        {
+            //make a ui thing that says it didn't work
+        }
+    }
 
-            if (apChecker.isPanther)
+    public void EnemyPlayerInteraction()
+    {
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].GetComponent<PlayerMove>().intBox.SetActive(true);
+
+            if (players[i].GetComponent<PlayerMove>().intBox.GetComponent<Interaction>().enemy)
             {
-                apComp.Rescue();
-            }
-            else
-            {
-                counting = 1;
+                players[i].GetComponent<PlayerMove>().attacked = true;
             }
         }
-        if (counting == 1)
-        {
-            apChecker.CheckLeft();
+    }
 
-            if (apChecker.isPanther)
+    public void EnemyPantherInteraction()
+    {
+        for (int i = 0; i < panther.Length; i++)
+        {
+            pComp[i].intBox.SetActive(true);
+
+            if (pComp[i].intBox.GetComponent<Interaction>().enemy)
             {
-                apComp.Rescue();
-            }
-            else
-            {
-                counting = 2;
+                pComp[i].attacked = true;
             }
         }
-        if (counting == 2)
-        {
-            apChecker.CheckUp();
+    }
 
-            if (apChecker.isPanther)
-            {
-                apComp.Rescue();
-            }
-            else
-            {
-                counting = 3;
-            }
-        }
-        if (counting == 3)
+    public void PlayerPantherInteraction()
+    {
+        for (int i = 0; i < panther.Length; i++)
         {
-            apChecker.CheckDown();
+            pComp[i].intBox.SetActive(true);
 
-            if (apChecker.isPanther)
+            if (pComp[i].intBox.GetComponent<Interaction>().player)
             {
-                apComp.Rescue();
+                pComp[i].canRescue = true;
             }
-            else
-            {
-                counting = 4;
-            }
-        }
-        if (counting >= 4)
-        {
-            apChecker.transform.position = activePlayer.transform.position;
-            counting = 0;
-            return;
         }
     }
 

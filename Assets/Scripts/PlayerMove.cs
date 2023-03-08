@@ -31,6 +31,8 @@ public class PlayerMove : MonoBehaviour
     public GameObject icon;
     public Sprite hIcon;
 
+    public GameObject intBox;
+
     void Update()
     {
         currentX = Mathf.Round(transform.position.x * 100) / 100;

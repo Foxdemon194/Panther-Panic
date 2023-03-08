@@ -34,6 +34,8 @@ public class Panther : MonoBehaviour
     public Sprite hIcon;
     public Sprite lIcon;
 
+    public GameObject intBox;
+
     private void Start()
     {
         ChangeTargetRand();
@@ -89,6 +91,16 @@ public class Panther : MonoBehaviour
             {
                 MovementD();
             }
+        }
+
+        if (intBox.GetComponent<Interaction>().player)
+        {
+            canRescue = true;
+        }
+
+        if (intBox.GetComponent<Interaction>().enemy)
+        {
+            attacked = true;
         }
 
         if (currentX == targetX && currentY == targetY)
