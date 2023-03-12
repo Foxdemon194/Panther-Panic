@@ -29,12 +29,13 @@ public class PlayerTurn : MonoBehaviour
     public bool canMove;
 
     int maNum = 0;
-    int counting = 0;
     public int[] playerCount;
     public int[] pantherCount;
 
     public GameObject winMenu;
     public GameObject loseMenu;
+
+    int val;
 
     void Start()
     {
@@ -125,6 +126,7 @@ public class PlayerTurn : MonoBehaviour
 
                     pComp[i].canRescue = false;
 
+                    apComp.intBox.GetComponent<Interaction>().panther = false;
 
                     if (pComp[i].rAttempts <= 0)
                     {
@@ -155,6 +157,8 @@ public class PlayerTurn : MonoBehaviour
 
                         players[x].GetComponent<PlayerMove>().attacked = false;
 
+                        players[x].GetComponent<PlayerMove>().intBox.SetActive(false);
+
                         enComp[i].attack = false;
                     }
                 }
@@ -178,6 +182,17 @@ public class PlayerTurn : MonoBehaviour
                     }
                 }
             }
+        }
+
+        if (apComp.intBox.GetComponent<Interaction>().panther && val <= 0)
+        {
+            apComp.Rescue();
+            apComp.intBox.SetActive(false);
+            val++;
+        }
+        else
+        {
+            //make a ui thing that says it didn't work
         }
 
         //Win screen
@@ -217,8 +232,11 @@ public class PlayerTurn : MonoBehaviour
 
             if (enTest <= 0)
             {
+                apComp.intBox.GetComponent<Interaction>().panther = false;
+                apComp.rescue = false;
                 enemysTurn = false;
                 playersTurn = true;
+                val = 0;
                 test = 0;
             }
         }
@@ -709,17 +727,7 @@ public class PlayerTurn : MonoBehaviour
 
     public void CheckPanther()
     {
-        Debug.Log("hi");
         apComp.intBox.SetActive(true);
-        
-        if (apComp.intBox.GetComponent<Interaction>().panther)
-        {
-            apComp.Rescue();
-        }
-        else
-        {
-            //make a ui thing that says it didn't work
-        }
     }
 
     public void EnemyPlayerInteraction()

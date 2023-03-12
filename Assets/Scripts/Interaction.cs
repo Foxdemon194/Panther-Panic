@@ -9,6 +9,8 @@ public class Interaction : MonoBehaviour
     public bool panther;
     public bool player;
     public bool enemy;
+    public int parentVal;
+    public int colVal;
 
     void OnEnable()
     {
@@ -17,53 +19,77 @@ public class Interaction : MonoBehaviour
         player = false;
     }
 
+    private void Update()
+    {
+        if (parent.gameObject.tag == "Panther")
+        {
+            parentVal = 3;
+        }
+        else if (parent.gameObject.tag == "Enemy")
+        {
+            parentVal = 2;
+        }
+        else if (parent.gameObject.tag == "Player")
+        {
+            parentVal = 1;
+        }
+
+
+        if (parentVal == 1)
+        {
+            if (colVal == 2)
+            {
+                enemy = true;
+            }
+
+            if (colVal == 3)
+            {
+                panther = true;
+            }
+        }
+        else if (parentVal == 2)
+        {
+            if (colVal == 1)
+            {
+                player = true;
+            }
+
+            if (colVal == 3)
+            {
+                panther = true;
+            }
+        }
+        else if (parentVal == 3)
+        {
+            if (colVal == 1)
+            {
+                player = true;
+            }
+
+            if (colVal == 2)
+            {
+                enemy = true;
+            }
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag != parent.tag)
         {
             if (collision.tag == "Panther")
             {
-                if (parent.tag == "Player")
-                {
-                    panther = true;
-                }
-
-                if (parent.tag == "Enemy")
-                {
-                    panther = true;
-                }
-
-                gameObject.SetActive(false);
+                colVal = 3;
             }
 
             if (collision.tag == "Player")
             {
-                if (parent.tag == "Enemy")
-                {
-                    player = true;
-                }
-
-                if (parent.tag == "Panther")
-                {
-                    player = true;
-                }
-
-                gameObject.SetActive(false);
+                colVal = 1;
             }
 
             if (collision.tag == "Enemy")
             {
-                if (parent.tag == "Player")
-                {
-                    enemy = true;
-                }
-
-                if (parent.tag == "Panther")
-                {
-                    enemy = true;
-                }
-
-                gameObject.SetActive(false);
+                colVal = 2;
             }
         }
     }

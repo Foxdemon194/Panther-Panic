@@ -1566,6 +1566,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2452256175945228313, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: parentVal
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4490918725917854780, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3513,6 +3517,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2452256175945228313, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: parentVal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4490918725917854780, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4336,6 +4344,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 487530360432873244, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452256175945228313, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: parentVal
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4490918725917854780, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
@@ -6449,6 +6461,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2452256175945228313, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: parentVal
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4490918725917854780, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6922,6 +6938,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 487530360432873244, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452256175945228313, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: parentVal
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4490918725917854780, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
@@ -22994,7 +23014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1906827288
 Transform:
   m_ObjectHideFlags: 0
@@ -23003,7 +23023,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906827287}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0019999743, y: 3.125, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.71896493, y: 0.71896493, z: 1.1061}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23026,6 +23046,8 @@ MonoBehaviour:
   panther: 0
   player: 0
   enemy: 0
+  parentVal: 3
+  colVal: 0
 --- !u!61 &1906827290
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24345,6 +24367,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 487530360432873244, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452256175945228313, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
+      propertyPath: parentVal
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4490918725917854780, guid: 8c285375b3de34a479772c6adc8d7083, type: 3}
