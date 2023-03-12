@@ -463,8 +463,8 @@ MonoBehaviour:
     - UnityEditor.DeviceSimulation.ApplicationSettingsPlugin
     pluginStates:
     - '{}'
-    scale: 10
-    fitToScreenEnabled: 1
+    scale: 31
+    fitToScreenEnabled: 0
     rotationDegree: 0
     highlightSafeAreaEnabled: 1
     friendlyName: Apple iPhone 12
@@ -504,21 +504,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 6cbdffff18bfffff4c99000062990000b2990000d2990000fe990000209a0000
+      m_ExpandedIDs: e600ffffd801ffff902bffffa64fffffc4b7ffff0cb8ffff20bbffffb6bdfffffcbeffff2aaa000032aa00006eaa00007caa00008eaa000098aa0000a4aa0000aeaa0000baaa0000c4aa0000d4aa0000f2aa00002eab000036ab000046ab0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: BG
-        m_OriginalName: BG
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 39378
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -605,7 +605,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 24.8}
+      snapOffset: {x: 0, y: 26}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -819,9 +819,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 232.5, y: 1107.3495, z: 0}
+    m_Target: {x: 768, y: 1024, z: 0}
     speed: 2
-    m_Value: {x: 232.5, y: 1107.3495, z: 0.00000014740274}
+    m_Value: {x: 768, y: 1024, z: -0.0000006954342}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -871,9 +871,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1290.968
+    m_Target: 1280
     speed: 2
-    m_Value: 1290.9679
+    m_Value: 1280
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_suppressRenderingForFullscreen: 0
   m_SimulatorState:
     controlPanelVisible: 0
-    controlPanelWidth: 0
+    controlPanelWidth: NaN
     controlPanelFoldoutKeys:
     - UnityEditor.DeviceSimulation.ApplicationSettingsPlugin
     controlPanelFoldoutValues: 00
@@ -1147,7 +1147,7 @@ MonoBehaviour:
     pluginStates:
     - '{}'
     scale: 47
-    fitToScreenEnabled: 1
+    fitToScreenEnabled: 0
     rotationDegree: 0
     highlightSafeAreaEnabled: 1
     friendlyName: Apple iPhone 7
@@ -1208,9 +1208,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 14990000
-    m_LastClickedID: 39188
-    m_ExpandedIDs: 000000001499000022990000ae9a000000ca9a3b
+    m_SelectedIDs: 28990000
+    m_LastClickedID: 39208
+    m_ExpandedIDs: 00000000289900002c9900003699000092b800007ebd000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1388,7 +1388,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 35
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
