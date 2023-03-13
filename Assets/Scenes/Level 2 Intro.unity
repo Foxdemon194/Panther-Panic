@@ -194,9 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Welcome to the Pine Rocklands, located in the Everglades. Recently, a group
-    of poachers were spotted nearby. Your mission is to rescue the panthers before
-    the panthers get to them first. Distract the enemies by setting decoys.
+  m_Text: This scene is NOT ready to be included in the game.
 --- !u!222 &48196982
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -491,7 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.11830934, g: 0.16037738, b: 0.09607513, a: 1}
+  m_Color: {r: 0.3466981, g: 0.5, b: 0.4722178, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -765,7 +763,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: PINE ROCKLANDS
+  m_Text: BIG CYPRESS
 --- !u!222 &1085285066
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1124,8 +1122,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6b817e0a8ec24b245abeaefb0d6e7ff4, type: 3}
-  m_Type: 2
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1133,7 +1131,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.9
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1557899316
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1474,7 +1472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.17261471, g: 0.2264151, b: 0.10786757, a: 1}
+  m_Color: {r: 0.10980393, g: 0.22745098, b: 0.19073373, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
