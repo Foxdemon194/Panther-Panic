@@ -52,6 +52,18 @@ public class PlayerTurn : MonoBehaviour
         apComp = activePlayer.GetComponent<PlayerMove>();
 
         playersTurn = true;
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].GetComponent<PlayerMove>().hurt = false;
+        }
+
+        for (int i = 0; i < panther.Length; i++)
+        {
+            panther[i].GetComponent<Panther>().hurt = false;
+        }
+
+        UnPause();
     }
 
     void Update()
@@ -70,7 +82,7 @@ public class PlayerTurn : MonoBehaviour
             if (SumArray(playerCount) >= players.Length)
             {
                 loseMenu.SetActive(true);
-                Time.timeScale = 0;
+                Paused();
             }
         }
 
@@ -84,7 +96,7 @@ public class PlayerTurn : MonoBehaviour
             if (SumArray(pantherCount) >= panther.Length)
             {
                 loseMenu.SetActive(true);
-                Time.timeScale = 0;
+                Paused();
             }
         }
 
@@ -111,10 +123,6 @@ public class PlayerTurn : MonoBehaviour
         }
 
         MoveAround();
-
-        //Change so that ou can only do one thing per turn.
-        //ex. you can move, OR rescue, OR place a decoy
-        PlayerPantherInteraction();
 
         if (apComp.rescue)
         {
@@ -199,7 +207,7 @@ public class PlayerTurn : MonoBehaviour
         //maybe play music here too?
         if (rescuedPanthers >= panther.Length)
         {
-            Time.timeScale = 0;
+            Paused();
             winMenu.SetActive(true);
         }
     }
@@ -213,7 +221,7 @@ public class PlayerTurn : MonoBehaviour
                 enComp[i].CheckPlayer();
                 EnemyPlayerInteraction();
                 enComp[i].CheckPanther();
-                EnemyPantherInteraction();
+                //EnemyPantherInteraction();
                 enComp[i].moves = enComp[i].movement;
                 enTest++;
             }
@@ -728,6 +736,7 @@ public class PlayerTurn : MonoBehaviour
     public void CheckPanther()
     {
         apComp.intBox.SetActive(true);
+        PlayerPantherInteraction();
     }
 
     public void EnemyPlayerInteraction()
@@ -739,6 +748,10 @@ public class PlayerTurn : MonoBehaviour
             if (players[i].GetComponent<PlayerMove>().intBox.GetComponent<Interaction>().enemy)
             {
                 players[i].GetComponent<PlayerMove>().attacked = true;
+            }
+            else
+            {
+                players[i].GetComponent<PlayerMove>().attacked = false;
             }
         }
     }
@@ -753,6 +766,10 @@ public class PlayerTurn : MonoBehaviour
             {
                 pComp[i].attacked = true;
             }
+            else
+            {
+                pComp[i].attacked = false;
+            }
         }
     }
 
@@ -765,6 +782,10 @@ public class PlayerTurn : MonoBehaviour
             if (pComp[i].intBox.GetComponent<Interaction>().player)
             {
                 pComp[i].canRescue = true;
+            }
+            else
+            {
+                pComp[i].canRescue = false;
             }
         }
     }
@@ -779,5 +800,15 @@ public class PlayerTurn : MonoBehaviour
         }
 
         return sum;
+    }
+
+    public void Paused()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void UnPause()
+    {
+        Time.timeScale = 1;
     }
 }

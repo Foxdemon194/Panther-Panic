@@ -1984,7 +1984,7 @@ MonoBehaviour:
   newTarget: 0
   speed: 0.01
   moves: 0
-  movement: 3
+  movement: 0
   checker: {fileID: 194715123}
   checkX: 0
   checkY: 0
@@ -6879,7 +6879,7 @@ MonoBehaviour:
   newTarget: 0
   speed: 0.01
   moves: 0
-  movement: 3
+  movement: 0
   checker: {fileID: 568952112}
   checkX: 0
   checkY: 0
@@ -23014,7 +23014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1906827288
 Transform:
   m_ObjectHideFlags: 0

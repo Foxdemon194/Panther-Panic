@@ -12,14 +12,7 @@ public class Interaction : MonoBehaviour
     public int parentVal;
     public int colVal;
 
-    void OnEnable()
-    {
-        panther = false;
-        enemy = false;
-        player = false;
-    }
-
-    private void Update()
+    void Update()
     {
         if (parent.gameObject.tag == "Panther")
         {
@@ -80,16 +73,17 @@ public class Interaction : MonoBehaviour
             if (collision.tag == "Panther")
             {
                 colVal = 3;
+                gameObject.SetActive(false);
             }
-
             if (collision.tag == "Player")
             {
                 colVal = 1;
+                gameObject.SetActive(false);
             }
-
             if (collision.tag == "Enemy")
             {
                 colVal = 2;
+                gameObject.SetActive(false);
             }
         }
     }

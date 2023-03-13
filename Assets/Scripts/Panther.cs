@@ -68,6 +68,15 @@ public class Panther : MonoBehaviour
             //change the sprite maybe??
         }
 
+        if (intBox.GetComponent<Interaction>().enemy)
+        {
+            attacked = true;
+        }
+        else
+        {
+            attacked = false;
+        }
+
         if (moves <= 0 && checkX == currentX && checkY == currentY)
         {
             moves = 0;
