@@ -2233,7 +2233,7 @@ MonoBehaviour:
   newTarget: 0
   speed: 0.01
   moves: 0
-  movement: 0
+  movement: 3
   checker: {fileID: 194715123}
   checkX: 0
   checkY: 0
@@ -4514,8 +4514,8 @@ RectTransform:
   m_Children:
   - {fileID: 409823341}
   - {fileID: 548461985}
-  - {fileID: 1798477919}
   - {fileID: 44499814}
+  - {fileID: 1798477919}
   m_Father: {fileID: 10734626}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7712,7 +7712,7 @@ MonoBehaviour:
   newTarget: 0
   speed: 0.01
   moves: 0
-  movement: 0
+  movement: 3
   checker: {fileID: 568952112}
   checkX: 0
   checkY: 0
