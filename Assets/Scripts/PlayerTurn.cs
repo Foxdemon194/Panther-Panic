@@ -66,7 +66,7 @@ public class PlayerTurn : MonoBehaviour
         UnPause();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         activePlayer = players[num];
         apComp = activePlayer.GetComponent<PlayerMove>();

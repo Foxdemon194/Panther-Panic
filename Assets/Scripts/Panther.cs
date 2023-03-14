@@ -41,7 +41,7 @@ public class Panther : MonoBehaviour
         ChangeTargetRand();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         currentX = Mathf.Round(transform.position.x * 100) / 100;
         currentY = Mathf.Round(transform.position.y * 100) / 100;
